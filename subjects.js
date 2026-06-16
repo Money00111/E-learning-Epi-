@@ -40,7 +40,10 @@ subjects.forEach(sub => {
 
     // 🔥 Bika subject
     localStorage.setItem("subject", sub);
-
+function openSubject(sub) {
+  localStorage.setItem("subject", sub);
+  window.location.href = "lessons.html";
+}
     // 🔥 Jya kuri lessons page
     window.location.href = "lessons.html";
   };
