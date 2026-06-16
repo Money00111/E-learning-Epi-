@@ -2,10 +2,13 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/fireba
 
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js";
 
-import {
-  getDatabase
-} from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
+import {getDatabase }from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
 
+import { getDatabase }from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
+
+const db = getDatabase(app);
+
+export { db };
 const firebaseConfig = {
   apiKey: "AIzaSyDVYmmWJHEiNtQCroj393lLEpgGaW_h0mM",
   authDomain: "e-learning-epi.firebaseapp.com",
