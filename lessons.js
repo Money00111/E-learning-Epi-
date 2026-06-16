@@ -1,44 +1,40 @@
 const subject = localStorage.getItem("subject");
 
 document.getElementById("subjectTitle").innerText =
-"📖 Lessons za " + subject;
+"📖 " + subject;
 
-// Lessons nyinshi (PRO structure)
+// PRO LESSON DATA
 const lessonsData = {
   "Math": [
     {
-      title: "Lesson 1: Integers",
+      title: "Integers Basics",
+      level: "Beginner",
+      time: "15 min",
       video: "https://www.youtube.com/embed/8J7JYb2T6g8"
     },
     {
-      title: "Lesson 2: Fractions",
+      title: "Fractions",
+      level: "Intermediate",
+      time: "20 min",
       video: "https://www.youtube.com/embed/FezQF3T0x2M"
-    },
-    {
-      title: "Lesson 3: Algebra Basics",
-      video: "https://www.youtube.com/embed/5b7XgGg0x1A"
     }
   ],
 
   "English": [
     {
-      title: "Lesson 1: Tenses",
+      title: "Tenses",
+      level: "Beginner",
+      time: "18 min",
       video: "https://www.youtube.com/embed/N4ZrD8w6tQ0"
-    },
-    {
-      title: "Lesson 2: Grammar",
-      video: "https://www.youtube.com/embed/1Y0cG9d5xZQ"
     }
   ],
 
   "Biology": [
     {
-      title: "Lesson 1: Cell Structure",
+      title: "Cell Structure",
+      level: "Beginner",
+      time: "22 min",
       video: "https://www.youtube.com/embed/gFuEoxh5hd4"
-    },
-    {
-      title: "Lesson 2: Human Body",
-      video: "https://www.youtube.com/embed/2XGx0b9kQp0"
     }
   ]
 };
@@ -47,30 +43,29 @@ const lessons = lessonsData[subject] || [];
 
 const container = document.getElementById("lessonsContainer");
 
-lessons.forEach((l) => {
+lessons.forEach(l => {
 
   const div = document.createElement("div");
   div.className = "lesson-card";
 
-div.innerHTML = `
-  <div class="lesson-title">
-    ▶ ${l.title}
-  </div>
+  div.innerHTML = `
+    <div class="lesson-thumb">▶</div>
 
-  <div class="lesson-info">
-    ⏱ 15 min • 📖 Video Lesson
-  </div>
-`;
+    <div class="lesson-content">
+      <div class="lesson-title">${l.title}</div>
+      <div class="lesson-meta">⏱ ${l.time} • 📖 ${l.level}</div>
+    </div>
+
+    <button class="play-btn">Play</button>
+  `;
 
   div.onclick = () => {
-    // 🔥 show video
     document.getElementById("lessonVideo").src = l.video;
   };
 
   container.appendChild(div);
 });
 
-// Quiz navigation
-function goQuiz(){
+function goQuiz() {
   window.location.href = "quiz.html";
-  }
+      }
