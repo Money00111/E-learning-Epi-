@@ -40,4 +40,9 @@ lessons.forEach(lesson => {
   };
 
   container.appendChild(div);
+  
+  div.onclick = () => {
+  localStorage.setItem("subject", subject);
+  window.location.href = "lessons.html";
+};
 });
