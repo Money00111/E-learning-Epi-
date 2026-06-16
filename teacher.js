@@ -5,7 +5,7 @@ import {
   push
 } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
 
-window.saveLesson = function() {
+window.saveLesson = function () {
 
   const lesson = {
     level: document.getElementById("level").value,
@@ -14,15 +14,6 @@ window.saveLesson = function() {
     title: document.getElementById("lessonTitle").value,
     video: document.getElementById("videoLink").value,
     createdAt: Date.now()
-    question: document.getElementById("question").value,
-
-options: [
-  document.getElementById("optionA").value,
-  document.getElementById("optionB").value,
-  document.getElementById("optionC").value
-],
-
-answer: document.getElementById("correctAnswer").value,
   };
 
   push(ref(db, "lessons"), lesson)
@@ -34,7 +25,7 @@ answer: document.getElementById("correctAnswer").value,
       document.getElementById("lessonTitle").value = "";
       document.getElementById("videoLink").value = "";
     })
-    .catch((error) => {
-      alert("❌ Error: " + error.message);
+    .catch((e) => {
+      alert("❌ Error: " + e.message);
     });
-    }
+};
