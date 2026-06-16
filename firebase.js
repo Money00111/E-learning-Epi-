@@ -1,20 +1,24 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
 
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js";
+
 import {
   getDatabase
 } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
 
 const firebaseConfig = {
-  apiKey: "SHYIRAMO_API_KEY_YAWE",
-  authDomain: "SHYIRAMO_AUTH_DOMAIN",
-  databaseURL: "SHYIRAMO_DATABASE_URL",
-  projectId: "SHYIRAMO_PROJECT_ID",
-  storageBucket: "SHYIRAMO_STORAGE_BUCKET",
-  messagingSenderId: "SHYIRAMO_SENDER_ID",
-  appId: "SHYIRAMO_APP_ID"
+  apiKey: "AIzaSyDVYmmWJHEiNtQCroj393lLEpgGaW_h0mM",
+  authDomain: "e-learning-epi.firebaseapp.com",
+  databaseURL: "https://e-learning-epi-default-rtdb.firebaseio.com",
+  projectId: "e-learning-epi",
+  storageBucket: "e-learning-epi.firebasestorage.app",
+  messagingSenderId: "814946403235",
+  appId: "1:814946403235:web:257e305f822cf5d3cad016",
+  measurementId: "G-7KKQMNE0JX"
 };
 
 const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 const db = getDatabase(app);
 
