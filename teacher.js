@@ -14,6 +14,15 @@ window.saveLesson = function() {
     title: document.getElementById("lessonTitle").value,
     video: document.getElementById("videoLink").value,
     createdAt: Date.now()
+    question: document.getElementById("question").value,
+
+options: [
+  document.getElementById("optionA").value,
+  document.getElementById("optionB").value,
+  document.getElementById("optionC").value
+],
+
+answer: document.getElementById("correctAnswer").value,
   };
 
   push(ref(db, "lessons"), lesson)
