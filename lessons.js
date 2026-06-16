@@ -49,15 +49,17 @@ lessons.forEach(l => {
   div.className = "lesson-card";
 
   div.innerHTML = `
-    <div class="lesson-thumb">▶</div>
+<div class="lesson-thumb">▶</div>
 
-    <div class="lesson-content">
-      <div class="lesson-title">${l.title}</div>
-      <div class="lesson-meta">⏱ ${l.time} • 📖 ${l.level}</div>
-    </div>
+<div class="lesson-content">
+  <div class="lesson-title">${l.title}</div>
+  <div class="lesson-meta">
+    ⏱ ${l.time} • 📖 ${l.level}
+  </div>
+</div>
 
-    <button class="play-btn">Play</button>
-  `;
+<button class="play-btn">Play Video</button>
+`;
 
   div.onclick = () => {
     document.getElementById("lessonVideo").src = l.video;
