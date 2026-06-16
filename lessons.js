@@ -48,4 +48,7 @@ lessons.forEach(item => {
 
   container.appendChild(div);
 
+  function startQuiz(){
+  window.location.href = "quiz.html";
+    }
 });
