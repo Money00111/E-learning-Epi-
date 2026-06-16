@@ -50,8 +50,17 @@ const container = document.getElementById("lessonsContainer");
 lessons.forEach((l) => {
 
   const div = document.createElement("div");
-  div.className = "card";
-  div.innerText = l.title;
+  div.className = "lesson-card";
+
+div.innerHTML = `
+  <div class="lesson-title">
+    ▶ ${l.title}
+  </div>
+
+  <div class="lesson-info">
+    ⏱ 15 min • 📖 Video Lesson
+  </div>
+`;
 
   div.onclick = () => {
     // 🔥 show video
