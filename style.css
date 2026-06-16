@@ -18,6 +18,58 @@ iframe {
   margin-top: 20px;
 }
 .lesson-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.lesson-card:hover {
+  transform: translateY(-4px);
+}
+
+.lesson-thumb {
+  width: 90px;
+  height: 60px;
+  border-radius: 10px;
+  background: #4a6bff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+.lesson-content {
+  flex: 1;
+}
+
+.lesson-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.lesson-meta {
+  font-size: 13px;
+  color: gray;
+  margin-top: 5px;
+}
+
+.play-btn {
+  background: #4a6bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  }
+.lesson-card {
   background: #fff;
   border-radius: 15px;
   padding: 15px;
