@@ -7,23 +7,30 @@ import {
 
 window.saveLesson = function () {
 
+  const level = document.getElementById("level").value;
+  const subject = document.getElementById("subject").value;
+  const topic = document.getElementById("topic").value;
+  const title = document.getElementById("lessonTitle").value;
+  const video = document.getElementById("videoLink").value;
+
+  // ❗ CHECK niba hari empty
+  if (!subject || !topic || !title || !video) {
+    alert("❌ Uzuza byose mbere yo kubika");
+    return;
+  }
+
   const lesson = {
-    level: document.getElementById("level").value,
-    subject: document.getElementById("subject").value,
-    topic: document.getElementById("topic").value,
-    title: document.getElementById("lessonTitle").value,
-    video: document.getElementById("videoLink").value,
+    level,
+    subject,
+    topic,
+    title,
+    video,
     createdAt: Date.now()
   };
 
   push(ref(db, "lessons"), lesson)
     .then(() => {
       alert("✅ Lesson Saved!");
-
-      document.getElementById("subject").value = "";
-      document.getElementById("topic").value = "";
-      document.getElementById("lessonTitle").value = "";
-      document.getElementById("videoLink").value = "";
     })
     .catch((e) => {
       alert("❌ Error: " + e.message);
