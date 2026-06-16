@@ -1,54 +1,100 @@
-const questions = [
-{
-question: "2 + 2 = ?",
-options: ["3","4","5","6"],
-answer: "4"
-},
-{
-question: "5 × 3 = ?",
-options: ["10","12","15","20"],
-answer: "15"
-}
-];
+const subject = localStorage.getItem("subject");
 
+const quizzes = {
+
+  "Math": [
+    {
+      question: "2 + 2 = ?",
+      options: ["3","4","5","6"],
+      answer: "4"
+    },
+    {
+      question: "10 ÷ 2 = ?",
+      options: ["2","3","5","6"],
+      answer: "5"
+    }
+  ],
+
+  "Physics": [
+    {
+      question: "Unit of Force?",
+      options: ["Newton","Meter","Second","Kg"],
+      answer: "Newton"
+    },
+    {
+      question: "Voltage is measured in?",
+      options: ["Ampere","Volt","Watt","Ohm"],
+      answer: "Volt"
+    }
+  ],
+
+  "Biology": [
+    {
+      question: "Basic unit of life?",
+      options: ["Cell","Blood","Heart","Leaf"],
+      answer: "Cell"
+    },
+    {
+      question: "Human has how many lungs?",
+      options: ["1","2","3","4"],
+      answer: "2"
+    }
+  ]
+
+};
+
+const questions = quizzes[subject] || [];
 const container = document.getElementById("quizContainer");
 
 questions.forEach((q,index)=>{
 
-const div = document.createElement("div");
+  const div = document.createElement("div");
 
-div.innerHTML = `
-<h3>${q.question}</h3>
+  div.className = "lesson-card";
 
-<label><input type="radio" name="q${index}" value="${q.options[0]}"> ${q.options[0]}</label><br>
+  div.innerHTML = `
+    <h3>${q.question}</h3>
 
-<label><input type="radio" name="q${index}" value="${q.options[1]}"> ${q.options[1]}</label><br>
+    ${q.options.map(option => `
+      <label>
+        <input type="radio"
+        name="q${index}"
+        value="${option}">
+        ${option}
+      </label><br><br>
+    `).join("")}
+  `;
 
-<label><input type="radio" name="q${index}" value="${q.options[2]}"> ${q.options[2]}</label><br>
-
-<label><input type="radio" name="q${index}" value="${q.options[3]}"> ${q.options[3]}</label><br><br>
-`;
-
-container.appendChild(div);
+  container.appendChild(div);
 
 });
 
 document.getElementById("submitBtn").onclick = ()=>{
 
-let score = 0;
+  let score = 0;
 
-questions.forEach((q,index)=>{
+  questions.forEach((q,index)=>{
 
-const selected =
-document.querySelector(`input[name="q${index}"]:checked`);
+    const selected =
+      document.querySelector(
+        `input[name="q${index}"]:checked`
+      );
 
-if(selected && selected.value === q.answer){
-score++;
-}
+    if(
+      selected &&
+      selected.value === q.answer
+    ){
+      score++;
+    }
 
-});
+  });
 
-document.getElementById("result").innerText =
-`Score: ${score}/${questions.length}`;
+  localStorage.setItem(
+    "score",
+    `${score}/${questions.length}`
+  );
+
+  window.location.href =
+    "certificate.html";
 
 };
