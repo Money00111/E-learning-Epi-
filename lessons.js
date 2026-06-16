@@ -51,4 +51,5 @@ lessons.forEach(item => {
   function startQuiz(){
   window.location.href = "quiz.html";
     }
+  alert("JS irakora");
 });
