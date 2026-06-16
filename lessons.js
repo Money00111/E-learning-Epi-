@@ -5,14 +5,14 @@ import {
   onValue
 } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
 
+// 👉 subject iva muri subjects page
 const subject = localStorage.getItem("subject");
 
 document.getElementById("subjectTitle").innerText =
-"📖 " + subject;
+"📖 " + (subject || "All Lessons");
 
 const container = document.getElementById("lessonsContainer");
 
-// 🔥 READ FIREBASE
 onValue(ref(db, "lessons"), (snapshot) => {
 
   container.innerHTML = "";
@@ -20,14 +20,14 @@ onValue(ref(db, "lessons"), (snapshot) => {
   const data = snapshot.val();
 
   if (!data) {
-    container.innerHTML = "<p>No lessons found</p>";
+    container.innerHTML = "<h3>No lessons found</h3>";
     return;
   }
 
   Object.values(data).forEach((lesson) => {
 
-    // 🔥 FILTER SUBJECT
-    if (lesson.subject !== subject) return;
+    // 👉 SAFE CHECK
+    if (subject && lesson.subject !== subject) return;
 
     const card = document.createElement("div");
     card.className = "lesson-card";
@@ -50,9 +50,12 @@ onValue(ref(db, "lessons"), (snapshot) => {
 
     card.onclick = () => {
 
-      // 🔥 SAFE VIDEO LOAD
-      document.getElementById("lessonVideo").src =
-        lesson.video || "";
+      if (lesson.video) {
+        document.getElementById("lessonVideo").src =
+          lesson.video;
+      } else {
+        alert("No video found");
+      }
 
       localStorage.setItem(
         "currentLesson",
