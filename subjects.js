@@ -1,11 +1,14 @@
-// Dufata level yatoranyijwe
 const selectedLevel = localStorage.getItem("level");
 
-// Dushyira title
-document.getElementById("levelTitle").innerText =
-  `📚 Amasomo ya ${selectedLevel}`;
+// niba level itabitswe
+if (!selectedLevel) {
+  alert("Nta level wahisemo. Subira kuri Levels page.");
+  window.location.href = "levels.html";
+}
 
-// Data y'amasomo kuri buri level
+document.getElementById("levelTitle").innerText =
+  "📚 Amasomo ya " + selectedLevel;
+
 const data = {
   "Primary 1": ["Kinyarwanda", "Math", "English"],
   "Primary 2": ["Kinyarwanda", "Math", "English"],
@@ -23,20 +26,23 @@ const data = {
   "Year 3": ["Final Project", "AI Basics", "Security"]
 };
 
-// Fata amasomo ya level
 const subjects = data[selectedLevel] || [];
 
 const container = document.getElementById("subjectsContainer");
 
-// Erekana amasomo
 subjects.forEach(sub => {
+
   const div = document.createElement("div");
   div.className = "card";
   div.innerText = sub;
 
   div.onclick = () => {
-    alert("Wahisemo: " + sub);
-    // nyuma tuzashyiramo lessons + payment
+
+    // 🔥 Bika subject
+    localStorage.setItem("subject", sub);
+
+    // 🔥 Jya kuri lessons page
+    window.location.href = "lessons.html";
   };
 
   container.appendChild(div);
