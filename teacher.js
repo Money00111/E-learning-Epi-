@@ -1,22 +1,31 @@
-function saveLesson() {
+import { db } from "./firebase.js";
+
+import {
+  ref,
+  push
+} from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
+
+window.saveLesson = function() {
 
   const lesson = {
     level: document.getElementById("level").value,
     subject: document.getElementById("subject").value,
     topic: document.getElementById("topic").value,
     title: document.getElementById("lessonTitle").value,
-    video: document.getElementById("videoLink").value
+    video: document.getElementById("videoLink").value,
+    createdAt: Date.now()
   };
 
-  let lessons =
-    JSON.parse(localStorage.getItem("lessons")) || [];
+  push(ref(db, "lessons"), lesson)
+    .then(() => {
+      alert("✅ Lesson Saved!");
 
-  lessons.push(lesson);
-
-  localStorage.setItem(
-    "lessons",
-    JSON.stringify(lessons)
-  );
-
-  alert("Lesson Saved Successfully!");
-}
+      document.getElementById("subject").value = "";
+      document.getElementById("topic").value = "";
+      document.getElementById("lessonTitle").value = "";
+      document.getElementById("videoLink").value = "";
+    })
+    .catch((error) => {
+      alert("❌ Error: " + error.message);
+    });
+    }
