@@ -5,63 +5,54 @@ import {
   onValue
 } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
 
-const subject =
-  localStorage.getItem("subject");
+const subject = localStorage.getItem("subject");
 
 document.getElementById("subjectTitle").innerText =
-  "📖 " + subject;
+"📖 " + subject;
 
-const container =
-  document.getElementById("lessonsContainer");
+const container = document.getElementById("lessonsContainer");
 
+// 🔥 READ FIREBASE
 onValue(ref(db, "lessons"), (snapshot) => {
 
   container.innerHTML = "";
 
-  if (!snapshot.exists()) return;
-
   const data = snapshot.val();
 
-  Object.keys(data).forEach((key) => {
+  if (!data) {
+    container.innerHTML = "<p>No lessons found</p>";
+    return;
+  }
 
-    const lesson = data[key];
+  Object.values(data).forEach((lesson) => {
 
+    // 🔥 FILTER SUBJECT
     if (lesson.subject !== subject) return;
 
-    const card =
-      document.createElement("div");
-
+    const card = document.createElement("div");
     card.className = "lesson-card";
 
-    card.onclick = () => {
-
-  document.getElementById("lessonVideo").src =
-    lesson.video || "";
-
-};
     card.innerHTML = `
       <div class="lesson-thumb">▶</div>
 
       <div class="lesson-content">
         <div class="lesson-title">
-          ${lesson.title}
+          ${lesson.title || "No title"}
         </div>
 
         <div class="lesson-meta">
-          📚 ${lesson.topic}
+          📚 ${lesson.topic || "No topic"}
         </div>
       </div>
 
-      <button class="play-btn">
-        Play
-      </button>
+      <button class="play-btn">Play</button>
     `;
 
     card.onclick = () => {
 
-      document.getElementById(
-        "lessonVideo"
-      ).src = lesson.video;
+      // 🔥 SAFE VIDEO LOAD
+      document.getElementById("lessonVideo").src =
+        lesson.video || "";
 
       localStorage.setItem(
         "currentLesson",
@@ -71,21 +62,6 @@ onValue(ref(db, "lessons"), (snapshot) => {
     };
 
     container.appendChild(card);
-
   });
 
 });
-
-window.goQuiz = function () {
-
-  const lesson =
-    localStorage.getItem("currentLesson");
-
-  if (!lesson) {
-    alert("Banza uhitemo Lesson.");
-    return;
-  }
-
-  window.location.href =
-    "quiz.html";
-};
