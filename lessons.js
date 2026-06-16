@@ -33,6 +33,12 @@ onValue(ref(db, "lessons"), (snapshot) => {
 
     card.className = "lesson-card";
 
+    card.onclick = () => {
+
+  document.getElementById("lessonVideo").src =
+    lesson.video || "";
+
+};
     card.innerHTML = `
       <div class="lesson-thumb">▶</div>
 
