@@ -1,48 +1,51 @@
-// Fata subject yatoranyijwe
 const selectedSubject = localStorage.getItem("subject");
 
 document.getElementById("subjectTitle").innerText =
-  "📖 Lessons za " + selectedSubject;
+"📖 Lessons za " + selectedSubject;
 
-// Data ya lessons
 const lessonsData = {
   "Math": [
-    "Lesson 1: Integers",
-    "Lesson 2: Fractions",
-    "Lesson 3: Algebra"
+    {
+      title: "Lesson 1: Integers",
+      video: "https://www.youtube.com/embed/8J7JYb2T6g8"
+    },
+    {
+      title: "Lesson 2: Fractions",
+      video: "https://www.youtube.com/embed/FezQF3T0x2M"
+    }
   ],
 
   "English": [
-    "Lesson 1: Tenses",
-    "Lesson 2: Grammar Basics",
-    "Lesson 3: Writing"
+    {
+      title: "Lesson 1: Grammar",
+      video: "https://www.youtube.com/embed/N4ZrD8w6tQ0"
+    }
   ],
 
   "Biology": [
-    "Lesson 1: Cell Structure",
-    "Lesson 2: Human Body",
-    "Lesson 3: Plants"
+    {
+      title: "Lesson 1: Cell Structure",
+      video: "https://www.youtube.com/embed/gFuEoxh5hd4"
+    }
   ]
 };
 
-// Fata lessons za subject
 const lessons = lessonsData[selectedSubject] || [];
 
 const container = document.getElementById("lessonsContainer");
 
-lessons.forEach(lesson => {
+lessons.forEach(item => {
+
   const div = document.createElement("div");
+
   div.className = "card";
-  div.innerText = lesson;
+
+  div.innerText = item.title;
 
   div.onclick = () => {
-    alert("Ufunguye: " + lesson);
+    document.getElementById("lessonVideo").src = item.video;
   };
 
   container.appendChild(div);
-  
-  div.onclick = () => {
-  localStorage.setItem("subject", subject);
-  window.location.href = "lessons.html";
-};
+
 });
