@@ -1,73 +1,85 @@
-const subject = localStorage.getItem("subject");
+import { db } from "./firebase.js";
+
+import {
+  ref,
+  onValue
+} from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
+
+const subject =
+  localStorage.getItem("subject");
 
 document.getElementById("subjectTitle").innerText =
-"📖 " + subject;
+  "📖 " + subject;
 
-// PRO LESSON DATA
-const lessonsData = {
-  "Math": [
-    {
-      title: "Integers Basics",
-      level: "Beginner",
-      time: "15 min",
-      video: "https://www.youtube.com/embed/8J7JYb2T6g8"
-    },
-    {
-      title: "Fractions",
-      level: "Intermediate",
-      time: "20 min",
-      video: "https://www.youtube.com/embed/FezQF3T0x2M"
-    }
-  ],
+const container =
+  document.getElementById("lessonsContainer");
 
-  "English": [
-    {
-      title: "Tenses",
-      level: "Beginner",
-      time: "18 min",
-      video: "https://www.youtube.com/embed/N4ZrD8w6tQ0"
-    }
-  ],
+onValue(ref(db, "lessons"), (snapshot) => {
 
-  "Biology": [
-    {
-      title: "Cell Structure",
-      level: "Beginner",
-      time: "22 min",
-      video: "https://www.youtube.com/embed/gFuEoxh5hd4"
-    }
-  ]
-};
+  container.innerHTML = "";
 
-const lessons = lessonsData[subject] || [];
+  if (!snapshot.exists()) return;
 
-const container = document.getElementById("lessonsContainer");
+  const data = snapshot.val();
 
-lessons.forEach(l => {
+  Object.keys(data).forEach((key) => {
 
-  const div = document.createElement("div");
-  div.className = "lesson-card";
+    const lesson = data[key];
 
-  div.innerHTML = `
-<div class="lesson-thumb">▶</div>
+    if (lesson.subject !== subject) return;
 
-<div class="lesson-content">
-  <div class="lesson-title">${l.title}</div>
-  <div class="lesson-meta">
-    ⏱ ${l.time} • 📖 ${l.level}
-  </div>
-</div>
+    const card =
+      document.createElement("div");
 
-<button class="play-btn">Play Video</button>
-`;
+    card.className = "lesson-card";
 
-  div.onclick = () => {
-    document.getElementById("lessonVideo").src = l.video;
-  };
+    card.innerHTML = `
+      <div class="lesson-thumb">▶</div>
 
-  container.appendChild(div);
+      <div class="lesson-content">
+        <div class="lesson-title">
+          ${lesson.title}
+        </div>
+
+        <div class="lesson-meta">
+          📚 ${lesson.topic}
+        </div>
+      </div>
+
+      <button class="play-btn">
+        Play
+      </button>
+    `;
+
+    card.onclick = () => {
+
+      document.getElementById(
+        "lessonVideo"
+      ).src = lesson.video;
+
+      localStorage.setItem(
+        "currentLesson",
+        JSON.stringify(lesson)
+      );
+
+    };
+
+    container.appendChild(card);
+
+  });
+
 });
 
-function goQuiz() {
-  window.location.href = "quiz.html";
-      }
+window.goQuiz = function () {
+
+  const lesson =
+    localStorage.getItem("currentLesson");
+
+  if (!lesson) {
+    alert("Banza uhitemo Lesson.");
+    return;
+  }
+
+  window.location.href =
+    "quiz.html";
+};
