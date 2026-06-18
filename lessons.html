@@ -1,58 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lesson Page</title>
+const data = JSON.parse(localStorage.getItem("lessonsDB")) || {};
 
-  <link rel="stylesheet" href="style.css">
-</head>
+const container = document.getElementById("lessonsContainer");
 
-<body>
+// P1 subjects zose
+const subjects = data["Primary 1"] || {};
 
-  <div class="container">
+for (let subject in subjects) {
+  const subjectDiv = document.createElement("div");
 
-    <!-- Lesson Title -->
+  subjectDiv.innerHTML = `<h2>📚 ${subject}</h2>`;
 
+  subjects[subject].forEach((lesson, index) => {
+    const lessonDiv = document.createElement("div");
+
+    lessonDiv.innerHTML = `
       <h3>${lesson.title}</h3>
       <button onclick="openLesson('${subject}', ${index})">
         📖 Open Lesson
       </button>
       <hr>
+    `;
 
+    subjectDiv.appendChild(lessonDiv);
+  });
 
-    <!-- Lesson Content -->
-    <div id="content">
-      <p>lesson 1</p>
-    </div>
+  container.appendChild(subjectDiv);
+}
 
-  </div>
+// open lesson function
+function openLesson(subject, index) {
+  const lesson =
+    data["Primary 1"][subject][index];
 
-  <script>
-    // =========================
-    // 📖 GET LESSON FROM STORAGE
-    // =========================
-    const lesson = JSON.parse(localStorage.getItem("lesson"));
+  localStorage.setItem("lesson", JSON.stringify(lesson));
 
-    const titleEl = document.getElementById("title");
-    const contentEl = document.getElementById("content");
-
-    // =========================
-    // ❌ NO LESSON FOUND
-    // =========================
-    if (!lesson) {
-      titleEl.innerText = "No lesson selected";
-      contentEl.innerHTML = "<p>Hitamo isomo mbere.</p>";
-    }
-
-    // =========================
-    // ✅ SHOW LESSON
-    // =========================
-    else {
-      titleEl.innerText = lesson.title;
-      contentEl.innerHTML = `<p>${lesson.content}</p>`;
-    }
-  </script>
-
-</body>
-  </html>
+  window.location.href = "lesson.html";
+}
