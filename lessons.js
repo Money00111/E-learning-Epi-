@@ -1,27 +1,89 @@
-const container =
-document.getElementById("lessonsContainer");
+const subject = localStorage.getItem("subject");
 
-const card =
-document.createElement("div");
+document.getElementById("subjectTitle").innerText =
+"📖 " + subject;
 
-card.className = "lesson-card";
+const lessonsData = {
 
-card.innerHTML = `
-<h3>Lesson 1</h3>
-`;
+"Mathematics":[
 
-card.onclick = () => {
+"Integers",
 
-document.getElementById("lessonVideo").src =
-"https://www.youtube.com/embed/ysz5S6PUM-U";
+"Fractions",
+
+"Decimals",
+
+"Algebra"
+
+],
+
+"Physics":[
+
+"Force",
+
+"Energy",
+
+"Electricity"
+
+],
+
+"English":[
+
+"Grammar",
+
+"Tenses",
+
+"Vocabulary"
+
+]
 
 };
 
-container.appendChild(card);
+const lessons = lessonsData[subject] || [];
+
+const container =
+document.getElementById("lessonsContainer");
 
 
-function goQuiz(){
+lessons.forEach(lesson=>{
 
-alert("Quiz");
+const div =
+document.createElement("div");
 
-}
+div.className="lesson-card";
+
+div.innerHTML=`
+
+<div class="lesson-title">
+
+${lesson}
+
+</div>
+
+<div class="lesson-meta">
+
+📖 Text Lesson
+
+</div>
+
+`;
+
+div.onclick=()=>{
+
+localStorage.setItem(
+
+"lesson",
+
+lesson
+
+);
+
+window.location.href=
+
+"lesson-content.html";
+
+};
+
+container.appendChild(div);
+
+});
