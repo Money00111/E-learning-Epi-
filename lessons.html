@@ -1,37 +1,25 @@
-const data = JSON.parse(localStorage.getItem("lessonsDB")) || {};
-
-const container = document.getElementById("lessonsContainer");
-
-// P1 subjects zose
-const subjects = data["Primary 1"] || {};
-
-for (let subject in subjects) {
-  const subjectDiv = document.createElement("div");
-
-  subjectDiv.innerHTML = `<h2>📚 ${subject}</h2>`;
-
-  subjects[subject].forEach((lesson, index) => {
-    const lessonDiv = document.createElement("div");
-
-    lessonDiv.innerHTML = `
-      <h3>${lesson.title}</h3>
+   <h3>${lesson.title}</h3>
       <button onclick="openLesson('${subject}', ${index})">
         📖 Open Lesson
       </button>
       <hr>
     `;
 
-    subjectDiv.appendChild(lessonDiv);
-  });
-
-  container.appendChild(subjectDiv);
-}
+    
 
 // open lesson function
 function openLesson(subject, index) {
   const lesson =
     data["Primary 1"][subject][index];
-
+Primary 1: {
+  Mathematics: [
+    { title: "Numbers 1–10", content: "..." },
+    { title: "Addition", content: "..." }
+  ],
+  English: [
+    { title: "Alphabet", content: "..." }
+  ]
+}
   localStorage.setItem("lesson", JSON.stringify(lesson));
 
   window.location.href = "lesson.html";
