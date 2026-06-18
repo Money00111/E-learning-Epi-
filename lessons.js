@@ -1,126 +1,37 @@
-const subject=
-
-localStorage.getItem(
-
-"subject"
-
-);
-
-
-document.getElementById(
-
-"subjectTitle"
-
-).innerText=
-
-subject;
-
-
-
-let lessons=
+const lesson=
 
 JSON.parse(
 
 localStorage.getItem(
 
-"lessons"
+"lesson"
 
 )
 
-)||[];
+);
 
 
-
-const container=
 
 document.getElementById(
 
-"lessonsContainer"
+"title"
 
-);
+).innerText=
 
-
-
-lessons.forEach(l=>{
-
-
-if(
-
-l.subject!=subject
-
-)
-
-return;
+lesson.title;
 
 
 
-const div=
+document.getElementById(
 
-document.createElement(
+"content"
 
-"div"
+).innerHTML=`
 
-);
+<p>
 
+${lesson.content}
 
-div.className=
-
-"lesson-card";
-
-
-
-div.innerHTML=`
-
-
-<div class="lesson-title">
-
-${l.title}
-
-</div>
-
-
-<div class="lesson-meta">
-
-📖 Notes Lesson
-
-</div>
-
+</p>
 
 `;
-
-
-
-div.onclick=()=>{
-
-
-localStorage.setItem(
-
-"lesson",
-
-JSON.stringify(
-
-l
-
-)
-
-);
-
-
-window.location.href=
-
-"lesson-content.html";
-
-
-};
-
-
-
-container.appendChild(
-
-div
-
-);
-
-
-
-});
