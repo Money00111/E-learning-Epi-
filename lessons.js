@@ -1,89 +1,126 @@
-const subject = localStorage.getItem("subject");
+const subject=
 
-document.getElementById("subjectTitle").innerText =
-"📖 " + subject;
+localStorage.getItem(
 
-const lessonsData = {
+"subject"
 
-"Mathematics":[
-
-"Integers",
-
-"Fractions",
-
-"Decimals",
-
-"Algebra"
-
-],
-
-"Physics":[
-
-"Force",
-
-"Energy",
-
-"Electricity"
-
-],
-
-"English":[
-
-"Grammar",
-
-"Tenses",
-
-"Vocabulary"
-
-]
-
-};
-
-const lessons = lessonsData[subject] || [];
-
-const container =
-document.getElementById("lessonsContainer");
+);
 
 
-lessons.forEach(lesson=>{
+document.getElementById(
 
-const div =
-document.createElement("div");
+"subjectTitle"
 
-div.className="lesson-card";
+).innerText=
+
+subject;
+
+
+
+let lessons=
+
+JSON.parse(
+
+localStorage.getItem(
+
+"lessons"
+
+)
+
+)||[];
+
+
+
+const container=
+
+document.getElementById(
+
+"lessonsContainer"
+
+);
+
+
+
+lessons.forEach(l=>{
+
+
+if(
+
+l.subject!=subject
+
+)
+
+return;
+
+
+
+const div=
+
+document.createElement(
+
+"div"
+
+);
+
+
+div.className=
+
+"lesson-card";
+
+
 
 div.innerHTML=`
 
+
 <div class="lesson-title">
 
-${lesson}
+${l.title}
 
 </div>
+
 
 <div class="lesson-meta">
 
-📖 Text Lesson
+📖 Notes Lesson
 
 </div>
 
+
 `;
 
+
+
 div.onclick=()=>{
+
 
 localStorage.setItem(
 
 "lesson",
 
-lesson
+JSON.stringify(
+
+l
+
+)
 
 );
+
 
 window.location.href=
 
 "lesson-content.html";
 
+
 };
 
-container.appendChild(div);
+
+
+container.appendChild(
+
+div
+
+);
+
+
 
 });
