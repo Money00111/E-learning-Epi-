@@ -3,7 +3,6 @@ const level = localStorage.getItem("level");
 document.title = level + " Subjects";
 
 const subjectsData = {
-
 "Primary 1": [
     "Mathematics",
     "English",
