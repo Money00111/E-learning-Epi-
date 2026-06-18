@@ -1,10 +1,31 @@
-const lesson = JSON.parse(localStorage.getItem("lesson")) || {
-  title: "No lesson selected",
-  content: "Hitamo isomo mbere."
-};
+const data = JSON.parse(localStorage.getItem("lessonsDB")) || {};
 
-document.getElementById("title").innerText = lesson.title;
+// Example: Primary 1 Mathematics
+const lessons = data["Primary 1"]?.["Mathematics"] || [];
 
-document.getElementById("content").innerHTML = `
-  <p>${lesson.content}</p>
-`;
+const container = document.getElementById("lessonsContainer");
+
+// niba nta lessons
+if (lessons.length === 0) {
+  container.innerHTML = `
+    <p>No lessons available</p>
+  `;
+} else {
+  lessons.forEach((lesson, index) => {
+    const div = document.createElement("div");
+
+    div.innerHTML = `
+      <h3>${lesson.title}</h3>
+      <p>${lesson.content}</p>
+      <button onclick="goQuiz(${index})">📝 Take Quiz</button>
+      <hr>
+    `;
+
+    container.appendChild(div);
+  });
+}
+
+// Quiz function
+function goQuiz(index) {
+  alert("Quiz for lesson " + index);
+}
