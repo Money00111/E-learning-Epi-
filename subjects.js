@@ -63,7 +63,7 @@ const subjectsData = {
     "Physical Education and Sports"
 ],
 
-"Secondary 1": [
+"S1": [
     "Mathematics",
     "English",
     "Kinyarwanda",
@@ -76,7 +76,7 @@ const subjectsData = {
     "ICT"
 ],
 
-"Secondary 2": [
+"S2": [
     "Mathematics",
     "English",
     "Kinyarwanda",
@@ -89,7 +89,7 @@ const subjectsData = {
     "ICT"
 ],
 
-"Secondary 3": [
+"S3": [
     "Mathematics",
     "English",
     "Kinyarwanda",
@@ -102,7 +102,7 @@ const subjectsData = {
     "ICT"
 ],
 
-"Secondary 4": [
+"S4": [
     "Mathematics",
     "English",
     "Kinyarwanda",
@@ -115,7 +115,7 @@ const subjectsData = {
     "ICT"
 ],
 
-"Secondary 5": [
+"S5": [
     "Mathematics",
     "English",
     "Kinyarwanda",
@@ -128,7 +128,7 @@ const subjectsData = {
     "ICT"
 ],
 
-"Secondary 6": [
+"S6": [
     "Mathematics",
     "English",
     "Kinyarwanda",
