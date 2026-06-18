@@ -13,7 +13,17 @@
   <div class="container">
 
     <!-- Lesson Title -->
-    <h2 id="title">subject</h2>
+
+      <h3>${lesson.title}</h3>
+      <button onclick="openLesson('${lesson.title}', '${lesson.content}')">
+        📖 Open Lesson
+      </button>
+      <hr>
+    `;
+
+    container.appendChild(div);
+  });
+}
 
     <!-- Lesson Content -->
     <div id="content">
