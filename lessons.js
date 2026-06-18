@@ -10,7 +10,66 @@ const subject = localStorage.getItem("subject");
 
 document.getElementById("subjectTitle").innerText =
 "📖 " + (subject || "All Lessons");
+const subject =
+localStorage.getItem("subject");
 
+document.getElementById(
+"subjectTitle"
+).innerText=
+subject;
+
+
+const lessonsData={
+
+"Mathematics":[
+"Lesson 1",
+"Lesson 2",
+"Lesson 3",
+"Lesson 4"
+],
+
+"Physics":[
+"Lesson 1",
+"Lesson 2",
+"Lesson 3"
+],
+
+"English":[
+"Lesson 1",
+"Lesson 2"
+]
+
+};
+
+
+const lessons=
+lessonsData[subject]||[];
+
+
+const container=
+document.getElementById(
+"lessonsContainer"
+);
+
+
+lessons.forEach(l=>{
+
+const div=
+document.createElement("div");
+
+div.className=
+"lesson-card";
+
+
+div.innerHTML=`
+
+<h3>${l}</h3>
+
+`;
+
+container.appendChild(div);
+
+});
 const container = document.getElementById("lessonsContainer");
 
 onValue(ref(db, "lessons"), (snapshot) => {
