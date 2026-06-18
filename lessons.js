@@ -1,3 +1,4 @@
+console.log(subject);
 const subject =
 localStorage.getItem("subject");
 
@@ -14,29 +15,19 @@ const lessonsData = {
 "Mathematics":[
 
 {
-
-title:"Lesson 1",
-
-video:
-"https://www.youtube.com/embed/ysz5S6PUM-U"
+  title:"Lesson 1",video:"https://www.youtube.com/embed/ysz5S6PUM-U"
 
 },
 
 {
 
-title:"Lesson 2",
-
-video:
-"https://www.youtube.com/embed/dQw4w9WgXcQ"
+title:"Lesson 2",video:"https://www.youtube.com/embed/dQw4w9WgXcQ"
 
 },
 
 {
 
-title:"Lesson 3",
-
-video:
-"https://www.youtube.com/embed/jNQXAC9IVRw"
+title:"Lesson 3",video:"https://www.youtube.com/embed/jNQXAC9IVRw"
 
 }
 
@@ -47,19 +38,13 @@ video:
 
 {
 
-title:"Lesson 1",
-
-video:
-"https://www.youtube.com/embed/ysz5S6PUM-U"
+title:"Lesson 1",video:"https://www.youtube.com/embed/ysz5S6PUM-U"
 
 },
 
 {
 
-title:"Lesson 2",
-
-video:
-"https://www.youtube.com/embed/dQw4w9WgXcQ"
+title:"Lesson 2",video:"https://www.youtube.com/embed/dQw4w9WgXcQ"
 
 }
 
@@ -71,10 +56,7 @@ video:
 
 {
 
-title:"Lesson 1",
-
-video:
-"https://www.youtube.com/embed/ysz5S6PUM-U"
+title:"Lesson 1",video:"https://www.youtube.com/embed/ysz5S6PUM-U"
 
 }
 
