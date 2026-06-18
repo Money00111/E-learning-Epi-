@@ -4,33 +4,143 @@ document.title = level + " Subjects";
 
 const subjectsData = {
 
-  "S1": [
+"Primary 1": [
     "Mathematics",
     "English",
-    "Biology",
-    "Chemistry",
-    "Physics"
-  ],
+    "Kinyarwanda",
+    "Science and Elementary Technology",
+    "Social and Religious Studies",
+    "Creative Arts",
+    "Physical Education and Sports"
+],
 
-  "S2": [
+"Primary 2": [
     "Mathematics",
     "English",
+    "Kinyarwanda",
+    "Science and Elementary Technology",
+    "Social and Religious Studies",
+    "Creative Arts",
+    "Physical Education and Sports"
+],
+
+"Primary 3": [
+    "Mathematics",
+    "English",
+    "Kinyarwanda",
+    "Science and Elementary Technology",
+    "Social and Religious Studies",
+    "Creative Arts",
+    "Physical Education and Sports"
+],
+
+"Primary 4": [
+    "Mathematics",
+    "English",
+    "Kinyarwanda",
+    "Science and Elementary Technology",
+    "Social and Religious Studies",
+    "Creative Arts",
+    "Physical Education and Sports"
+],
+
+"Primary 5": [
+    "Mathematics",
+    "English",
+    "Kinyarwanda",
+    "Science and Elementary Technology",
+    "Social and Religious Studies",
+    "Creative Arts",
+    "Physical Education and Sports"
+],
+
+"Primary 6": [
+    "Mathematics",
+    "English",
+    "Kinyarwanda",
+    "Science and Elementary Technology",
+    "Social and Religious Studies",
+    "Creative Arts",
+    "Physical Education and Sports"
+],
+
+"Secondary 1": [
+    "Mathematics",
+    "English",
+    "Kinyarwanda",
     "Biology",
     "Chemistry",
-    "Physics"
-  ],
+    "Physics",
+    "Geography",
+    "History",
+    "Entrepreneurship",
+    "ICT"
+],
 
-  "Primary 1": [
-    "Math",
+"Secondary 2": [
+    "Mathematics",
     "English",
-    "Kinyarwanda"
-  ],
+    "Kinyarwanda",
+    "Biology",
+    "Chemistry",
+    "Physics",
+    "Geography",
+    "History",
+    "Entrepreneurship",
+    "ICT"
+],
 
-  "Primary 2": [
-    "Math",
+"Secondary 3": [
+    "Mathematics",
     "English",
-    "Kinyarwanda"
-  ]
+    "Kinyarwanda",
+    "Biology",
+    "Chemistry",
+    "Physics",
+    "Geography",
+    "History",
+    "Entrepreneurship",
+    "ICT"
+],
+
+"Secondary 4": [
+    "Mathematics",
+    "English",
+    "Kinyarwanda",
+    "Biology",
+    "Chemistry",
+    "Physics",
+    "Geography",
+    "History",
+    "Entrepreneurship",
+    "ICT"
+],
+
+"Secondary 5": [
+    "Mathematics",
+    "English",
+    "Kinyarwanda",
+    "Biology",
+    "Chemistry",
+    "Physics",
+    "Geography",
+    "History",
+    "Entrepreneurship",
+    "ICT"
+],
+
+"Secondary 6": [
+    "Mathematics",
+    "English",
+    "Kinyarwanda",
+    "Biology",
+    "Chemistry",
+    "Physics",
+    "Geography",
+    "History",
+    "Entrepreneurship",
+    "ICT"
+]
 
 };
 
