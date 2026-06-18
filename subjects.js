@@ -1,17 +1,65 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
-import { getDatabase } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
+const level = localStorage.getItem("level");
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDVYmmWJHEiNtQCroj393lLEpgGaW_h0mM",
-  authDomain: "e-learning-epi.firebaseapp.com",
-  databaseURL: "https://e-learning-epi-default-rtdb.firebaseio.com",
-  projectId: "e-learning-epi",
-  storageBucket: "e-learning-epi.firebasestorage.app",
-  messagingSenderId: "814946403235",
-  appId: "1:814946403235:web:257e305f822cf5d3cad016"
+const subjectsData = {
+
+"S1":[
+"Mathematics",
+"English",
+"Biology",
+"Chemistry",
+"Physics"
+],
+
+"S2":[
+"Mathematics",
+"English",
+"Biology",
+"Chemistry",
+"Physics"
+],
+
+"Primary 1":[
+"Math",
+"English",
+"Kinyarwanda"
+],
+
+"Primary 2":[
+"Math",
+"English",
+"Kinyarwanda"
+]
+
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+const subjects = subjectsData[level] || [];
 
-export { db };
+const container =
+document.getElementById("subjectsContainer");
+
+subjects.forEach(subject=>{
+
+const card =
+document.createElement("div");
+
+card.className="card";
+
+card.innerHTML=`
+<h3>${subject}</h3>
+`;
+
+card.onclick=()=>{
+
+localStorage.setItem(
+"subject",
+subject
+);
+
+window.location.href=
+"lessons.html";
+
+};
+
+container.appendChild(card);
+
+});
