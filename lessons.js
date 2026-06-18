@@ -1,92 +1,196 @@
-const subject = localStorage.getItem("subject");
+const subject =
+localStorage.getItem("subject");
 
-document.getElementById("subjectTitle").innerText =
+
+document.getElementById(
+"subjectTitle"
+).innerText =
 "📖 " + subject;
+
 
 
 const lessonsData = {
 
 "Mathematics":[
-"Lesson 1",
-"Lesson 2",
-"Lesson 3",
-"Lesson 4"
+
+{
+
+title:"Lesson 1",
+
+video:
+"https://www.youtube.com/embed/ysz5S6PUM-U"
+
+},
+
+{
+
+title:"Lesson 2",
+
+video:
+"https://www.youtube.com/embed/dQw4w9WgXcQ"
+
+},
+
+{
+
+title:"Lesson 3",
+
+video:
+"https://www.youtube.com/embed/jNQXAC9IVRw"
+
+}
+
 ],
+
 
 "Physics":[
-"Lesson 1",
-"Lesson 2",
-"Lesson 3"
+
+{
+
+title:"Lesson 1",
+
+video:
+"https://www.youtube.com/embed/ysz5S6PUM-U"
+
+},
+
+{
+
+title:"Lesson 2",
+
+video:
+"https://www.youtube.com/embed/dQw4w9WgXcQ"
+
+}
+
 ],
+
+
 
 "English":[
-"Lesson 1",
-"Lesson 2"
-],
 
-"Biology":[
-"Lesson 1",
-"Lesson 2"
-],
+{
 
-"Chemistry":[
-"Lesson 1",
-"Lesson 2"
+title:"Lesson 1",
+
+video:
+"https://www.youtube.com/embed/ysz5S6PUM-U"
+
+}
+
 ]
 
 };
 
 
-const lessons = lessonsData[subject] || [];
+
+const lessons =
+
+lessonsData[subject] || [];
+
+
 
 const container =
-document.getElementById("lessonsContainer");
+
+document.getElementById(
+
+"lessonsContainer"
+
+);
 
 
-if(lessons.length===0){
 
-container.innerHTML=
-"<h3>No lessons found</h3>";
-
-}
+lessons.forEach(lesson=>{
 
 
-lessons.forEach(l=>{
+const card =
 
-const div =
-document.createElement("div");
+document.createElement(
 
-div.className =
+"div"
+
+);
+
+
+
+card.className =
+
 "lesson-card";
 
 
-div.innerHTML = `
 
-<div class="lesson-thumb">▶</div>
+card.innerHTML = `
+
+
+<div class="lesson-thumb">
+
+▶
+
+</div>
+
+
 
 <div class="lesson-content">
 
 <div class="lesson-title">
-${l}
+
+${lesson.title}
+
 </div>
+
 
 <div class="lesson-meta">
-📚 Video Lesson
-</div>
+
+🎥 Video Lesson
 
 </div>
+
+
+</div>
+
+
+
+<button class="play-btn">
+
+Play
+
+</button>
 
 `;
 
-div.onclick = ()=>{
 
-alert("Wafunguye "+l);
 
-// nyuma tuzashyiramo video
+card.onclick = ()=>{
+
+
+document.getElementById(
+
+"lessonVideo"
+
+).src = lesson.video;
+
 
 };
 
 
-container.appendChild(div);
+
+container.appendChild(
+
+card
+
+);
+
 
 });
+
+
+
+function goQuiz(){
+
+alert(
+
+"Quiz tuzayikora nyuma"
+
+);
+
+  }
