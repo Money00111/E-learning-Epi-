@@ -1,29 +1,52 @@
-const data = JSON.parse(localStorage.getItem("lessonsDB")) || {};
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson Page</title>
 
-// Example: Primary 1 Mathematics
-const lessons = data["Primary 1"]?.["Mathematics"] || [];
+  <link rel="stylesheet" href="style.css">
+</head>
 
-const container = document.getElementById("lessonsContainer");
+<body>
 
-// niba nta lessons
-if (lessons.length === 0) {
-  container.innerHTML = "<p>No lessons available</p>";
-} else {
-  lessons.forEach((lesson, index) => {
-    const div = document.createElement("div");
+  <div class="container">
 
-    div.innerHTML = `
-      <h3>${lesson.title}</h3>
-      <p>${lesson.content}</p>
-      <button onclick="goQuiz(${index})">📝 Take Quiz</button>
-      <hr>
-    `;
+    <!-- Lesson Title -->
+    <h2 id="title">Loading...</h2>
 
-    container.appendChild(div);
-  });
-}
+    <!-- Lesson Content -->
+    <div id="content">
+      <p>Loading lesson...</p>
+    </div>
 
-// Quiz function (sample)
-function goQuiz(index) {
-  alert("Quiz for lesson " + index);
-}
+  </div>
+
+  <script>
+    // =========================
+    // 📖 GET LESSON FROM STORAGE
+    // =========================
+    const lesson = JSON.parse(localStorage.getItem("lesson"));
+
+    const titleEl = document.getElementById("title");
+    const contentEl = document.getElementById("content");
+
+    // =========================
+    // ❌ NO LESSON FOUND
+    // =========================
+    if (!lesson) {
+      titleEl.innerText = "No lesson selected";
+      contentEl.innerHTML = "<p>Hitamo isomo mbere.</p>";
+    }
+
+    // =========================
+    // ✅ SHOW LESSON
+    // =========================
+    else {
+      titleEl.innerText = lesson.title;
+      contentEl.innerHTML = `<p>${lesson.content}</p>`;
+    }
+  </script>
+
+</body>
+  </html>
