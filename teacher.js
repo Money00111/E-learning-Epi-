@@ -1,38 +1,71 @@
-import { db } from "./firebase.js";
+window.saveLesson=function(){
 
-import {
-  ref,
-  push
-} from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
 
-window.saveLesson = function () {
+const lesson={
 
-  const level = document.getElementById("level").value;
-  const subject = document.getElementById("subject").value;
-  const topic = document.getElementById("topic").value;
-  const title = document.getElementById("lessonTitle").value;
-  const video = document.getElementById("videoLink").value;
+level:
 
-  // ❗ CHECK niba hari empty
-  if (!subject || !topic || !title || !video) {
-    alert("❌ Uzuza byose mbere yo kubika");
-    return;
-  }
+document.getElementById("level").value,
 
-  const lesson = {
-    level,
-    subject,
-    topic,
-    title,
-    video,
-    createdAt: Date.now()
-  };
+subject:
 
-  push(ref(db, "lessons"), lesson)
-    .then(() => {
-      alert("✅ Lesson Saved!");
-    })
-    .catch((e) => {
-      alert("❌ Error: " + e.message);
-    });
+document.getElementById("subject").value,
+
+title:
+
+document.getElementById("title").value,
+
+content:
+
+document.getElementById("content").value
+
+
+};
+
+
+
+let lessons=
+
+JSON.parse(
+
+localStorage.getItem(
+
+"lessons"
+
+)
+
+)||[];
+
+
+
+lessons.push(
+
+lesson
+
+);
+
+
+
+localStorage.setItem(
+
+"lessons",
+
+JSON.stringify(
+
+lessons
+
+)
+
+);
+
+
+
+alert(
+
+"Lesson Saved"
+
+);
+
+
+
 };
