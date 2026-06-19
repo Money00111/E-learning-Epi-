@@ -1,57 +1,64 @@
 import { db } from "./firebase.js";
 
 import {
-ref,
-push
+  ref,
+  push
 } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
 
 
-window.saveLesson = function(){
+window.saveLesson = function () {
 
-const level =
-document.getElementById("level").value;
+  const level = document.getElementById("level").value;
 
-const subject =
-document.getElementById("subject").value;
+  const subject = document.getElementById("subject").value;
 
-const title =
-document.getElementById("title").value;
+  const title = document.getElementById("title").value;
 
-const notes =
-document.getElementById("notes").value;
+  const notes = document.getElementById("notes").value;
 
 
-const lesson = {
+  if (!subject || !title || !notes) {
 
-title:title,
+    alert("Shyiramo amakuru yose");
 
-notes:notes
+    return;
+
+  }
+
+
+  const lesson = {
+
+    title: title,
+
+    notes: notes
+
+  };
+
+
+  push(
+
+    ref(db, `lessons/${level}/${subject}`),
+
+    lesson
+
+  )
+
+  .then(() => {
+
+    alert("✅ Lesson Saved");
+
+    document.getElementById("subject").value = "";
+
+    document.getElementById("title").value = "";
+
+    document.getElementById("notes").value = "";
+
+  })
+
+  .catch(error => {
+
+    alert("❌ " + error.message);
+
+  });
 
 };
-
-
-push(
-
-ref(db,
-
-`lessons/${level}/${subject}`)
-
-,
-
-lesson
-
-)
-
-.then(()=>{
-
-alert("✅ Lesson Saved");
-
-})
-
-.catch(err=>{
-
-alert("❌ "+err.message);
-
-});
-
-}
