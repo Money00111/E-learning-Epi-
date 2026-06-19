@@ -1,3 +1,4 @@
+alert("teacher.js loaded");
 import { db } from "./firebase.js";
 
 import {
