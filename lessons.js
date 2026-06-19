@@ -1,69 +1,32 @@
-const data = JSON.parse(localStorage.getItem("lessonsDB")) || {};
+<!DOCTYPE html>
+<html>
 
-// Example: Primary 1 Mathematics
-const lessons = data["Primary 1"]?.["Mathematics"] || [];
+<head>
 
-const container = document.getElementById("lessonsContainer");
-const allLevels = {
-  "Primary 1": lessonP1,
-  "Primary 2": lessonP2,
-  "Primary 3": lessonP3
-};
+<meta charset="UTF-8">
 
-const container = document.getElementById("lessonsContainer");
+<link rel="stylesheet" href="style.css">
 
-for (let level in allLevels) {
-  const levelDiv = document.createElement("div");
+</head>
 
-  levelDiv.innerHTML = `<h1>📘 ${level}</h1>`;
+<body>
 
-  const subjects = allLevels[level];
 
-  for (let subject in subjects) {
-    levelDiv.innerHTML += `<h2>📚 ${subject}</h2>`;
+<div class="container">
 
-    subjects[subject].forEach((lesson, index) => {
-      levelDiv.innerHTML += `
-        <h3>${lesson.title}</h3>
-        <button onclick="openLesson('${level}','${subject}',${index})">
-          📖 Open
-        </button>
-        <hr>
-      `;
-    });
-  }
+<h2 id="subjectTitle"></h2>
 
-  container.appendChild(levelDiv);
-}
+<div id="lessonsContainer"></div>
 
-function openLesson(level, subject, index) {
-  const lesson = allLevels[level][subject][index];
+<div id="lessonContent"></div>
 
-  localStorage.setItem("lesson", JSON.stringify(lesson));
+</div>
 
-  window.location.href = "lesson.html";
-  }
-// niba nta lessons
-if (lessons.length === 0) {
-  container.innerHTML = `
-    <p>No lessons available</p>
-  `;
-} else {
-  lessons.forEach((lesson, index) => {
-    const div = document.createElement("div");
 
-    div.innerHTML = `
-      <h3>${lesson.title}</h3>
-      <p>${lesson.content}</p>
-      <button onclick="goQuiz(${index})">📝 Take Quiz</button>
-      <hr>
-    `;
+<script src="lessons/P1/mathematics.js"></script>
 
-    container.appendChild(div);
-  });
-}
+<script src="lessons.js"></script>
 
-// Quiz function
-function goQuiz(index) {
-  alert("Quiz for lesson " + index);
-}
+</body>
+
+</html>
