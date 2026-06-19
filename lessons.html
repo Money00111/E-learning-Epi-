@@ -1,10 +1,32 @@
- div.innerHTML = `
-      <h3>${lesson.title}</h3>
-      <p>${lesson.content}</p>
-      <button onclick="goQuiz(${index})">📝 Take Quiz</button>
-      <hr>
- " + 
- <script src="lessonp1.js"></script>
-<script src="lessonp2.js"></script>
-<script src="lessonp3.js"></script>
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+<div class="container">
+
+<h2 id="subjectTitle"></h2>
+
+<div id="lessonsContainer"></div>
+
+<div id="lessonContent"></div>
+
+</div>
+
+
+<script src="lessons/P1/mathematics.js"></script>
+
 <script src="lessons.js"></script>
+
+</body>
+
+</html>
