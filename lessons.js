@@ -1,32 +1,36 @@
-<!DOCTYPE html>
-<html>
+const container = document.getElementById("lessonsContainer");
 
-<head>
-
-<meta charset="UTF-8">
-
-<link rel="stylesheet" href="style.css">
-
-</head>
-
-<body>
+const content = document.getElementById("lessonContent");
 
 
-<div class="container">
-
-<h2 id="subjectTitle"></h2>
-
-<div id="lessonsContainer"></div>
-
-<div id="lessonContent"></div>
-
-</div>
+lessons.forEach(lesson=>{
 
 
-<script src="lessons/P1/mathematics.js"></script>
+const card = document.createElement("div");
 
-<script src="lessons.js"></script>
 
-</body>
+card.className="lesson-card";
 
-</html>
+
+card.innerHTML=`
+
+<h3>${lesson.title}</h3>
+
+`;
+
+
+card.onclick=()=>{
+
+
+content.innerHTML=
+
+lesson.content;
+
+
+};
+
+
+container.appendChild(card);
+
+
+});
