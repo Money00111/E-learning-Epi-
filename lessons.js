@@ -1,29 +1,54 @@
 const container =
-document.getElementById("lessonsContainer");
+document.getElementById(
+"lessonsContainer"
+);
 
 
-questions.forEach((q,index)=>{
+if(
+!window.questions
+){
 
-const div =
-document.createElement("div");
+container.innerHTML=`
 
-div.className = "qa-card";
+<h2>
+
+No lessons found
+
+</h2>
+
+`;
+
+}
 
 
-div.innerHTML = `
+else{
+
+
+window.questions.forEach(
+
+(q,index)=>{
+
+const div=
+
+document.createElement(
+
+"div"
+
+);
+
+
+div.className=
+
+"qa-card";
+
+
+div.innerHTML=`
 
 <h3>
 
-Question ${index+1}
-
-</h3>
-
-
-<p>
-
 ${q.question}
 
-</p>
+</h3>
 
 
 <button class="show-btn">
@@ -42,39 +67,78 @@ ${q.answer}
 `;
 
 
-const btn =
-div.querySelector(".show-btn");
+const btn=
 
-const ans =
-div.querySelector(".answer");
+div.querySelector(
+
+".show-btn"
+
+);
 
 
-ans.style.display="none";
+const ans=
+
+div.querySelector(
+
+".answer"
+
+);
+
+
+ans.style.display=
+
+"none";
 
 
 btn.onclick=()=>{
 
-if(ans.style.display=="none"){
 
-ans.style.display="block";
+if(
+
+ans.style.display==
+
+"none"
+
+){
+
+ans.style.display=
+
+"block";
+
 
 btn.innerText=
+
 "Hide Answer";
 
 }
+
+
 else{
 
-ans.style.display="none";
+
+ans.style.display=
+
+"none";
+
 
 btn.innerText=
+
 "Show Answer";
 
+
 }
+
 
 };
 
 
-container.appendChild(div);
+container.appendChild(
+
+div
+
+);
 
 
 });
+
+  }
