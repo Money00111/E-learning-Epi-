@@ -1,4 +1,4 @@
-const lessons = [
+window.lessons = [
 
 {
 title:"Alphabet",
@@ -7,15 +7,12 @@ content:`
 
 <h2>Alphabet</h2>
 
-A B C D E F G
+<p>A B C D E F G H I J K L M</p>
 
-H I J K L M N
-
-O P Q R S T U
-
-V W X Y Z
+<p>N O P Q R S T U V W X Y Z</p>
 
 `
+
 },
 
 {
@@ -34,26 +31,7 @@ Good evening
 Good night
 
 `
-},
 
-{
-title:"Family Members",
-
-content:`
-
-<h2>Family Members</h2>
-
-Father
-
-Mother
-
-Brother
-
-Sister
-
-Baby
-
-`
 },
 
 {
