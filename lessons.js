@@ -5,7 +5,6 @@ document.getElementById("subjectTitle").innerText = subject;
 
 let file = "";
 
-
 // PRIMARY 1
 if(level==="Primary 1"){
 
