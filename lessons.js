@@ -1,143 +1,51 @@
 const container =
-document.getElementById(
-"lessonsContainer"
-);
+document.getElementById("lessonsContainer");
 
+// Force isolation (IMPORTANT FIX)
+const questions = window.questions || [];
 
-if(
-!window.questions
-){
+// Reset global immediately to avoid leaking to other subjects
+window.questions = null;
 
-container.innerHTML=`
+if (questions.length === 0) {
 
-<h2>
-
-No lessons found
-
-</h2>
-
+container.innerHTML = `
+<h2>No lessons found</h2>
 `;
 
-}
+} else {
 
+questions.forEach((q, index) => {
 
-else{
+const div = document.createElement("div");
+div.className = "qa-card";
 
+div.innerHTML = `
+<h3>${q.question}</h3>
 
-window.questions.forEach(
+<button class="show-btn">Show Answer</button>
 
-(q,index)=>{
-
-const div=
-
-document.createElement(
-
-"div"
-
-);
-
-
-div.className=
-
-"qa-card";
-
-
-div.innerHTML=`
-
-<h3>
-
-${q.question}
-
-</h3>
-
-
-<button class="show-btn">
-
-Show Answer
-
-</button>
-
-
-<div class="answer">
-
-${q.answer}
-
-</div>
-
+<div class="answer">${q.answer}</div>
 `;
 
+const btn = div.querySelector(".show-btn");
+const ans = div.querySelector(".answer");
 
-const btn=
+ans.style.display = "none";
 
-div.querySelector(
+btn.onclick = () => {
 
-".show-btn"
-
-);
-
-
-const ans=
-
-div.querySelector(
-
-".answer"
-
-);
-
-
-ans.style.display=
-
-"none";
-
-
-btn.onclick=()=>{
-
-
-if(
-
-ans.style.display==
-
-"none"
-
-){
-
-ans.style.display=
-
-"block";
-
-
-btn.innerText=
-
-"Hide Answer";
-
+if (ans.style.display === "none") {
+ans.style.display = "block";
+btn.innerText = "Hide Answer";
+} else {
+ans.style.display = "none";
+btn.innerText = "Show Answer";
 }
-
-
-else{
-
-
-ans.style.display=
-
-"none";
-
-
-btn.innerText=
-
-"Show Answer";
-
-
-}
-
 
 };
 
-
-container.appendChild(
-
-div
-
-);
-
+container.appendChild(div);
 
 });
 
