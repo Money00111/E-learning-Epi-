@@ -1,163 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LearnHub E-Learning</title>
+<!-- HOME PAGE -->
+<div id="home">
 
-<style>
-body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    background:#0f172a;
-    color:white;
-}
+<input
+class="search"
+placeholder="Search courses..."
+>
 
-header{
-    background:#1e293b;
-    padding:15px;
-    text-align:center;
-    font-size:22px;
-    font-weight:bold;
-}
+<div class="card" onclick="goToLevels()">
+🚗 Amategeko y'Umuhanda
+</div>
 
-.container{
-    padding:15px;
-}
-
-.search{
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:10px;
-    margin-bottom:15px;
-}
-
-.card{
-    background:#1e293b;
-    padding:15px;
-    border-radius:12px;
-    margin-bottom:10px;
-    cursor:pointer;
-}
-
-.card:hover{
-    background:#334155;
-}
-
-button{
-    background:#38bdf8;
-    color:black;
-    border:none;
-    padding:10px 15px;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.hidden{
-    display:none;
-}
-</style>
-</head>
-<body>
-
-<header>📚 LearnHub E-Learning</header>
-
-<div class="container">
-
-    <!-- HOME PAGE -->
-    <div id="home">
-
-        <input
-            class="search"
-            placeholder="Search courses..."
-
-<div class="card" onclick="goToLevels()">➗ Amategeko Yumuhanda</div>
-        </div>
 <br>
 
 <a href="login.html">Login</a>
 <a href="register.html">Create Account</a>
-    </div>
-
-    <!-- COURSE PAGE -->
-    <div id="coursePage" class="hidden">
-
-        <h2 id="courseTitle"></h2>
-
-        <div class="card" onclick="openLesson()">
-            ▶ Lesson 1 - Start Learning
-        </div>
-
-        <button onclick="backHome()">
-            ⬅ Back
-        </button>
-
-    </div>
-
-    <!-- LESSON PAGE -->
-    <div id="lessonPage" class="hidden">
-
-        <h2>🎥 Lesson</h2>
-
-        <div class="card">
-            Video Area (Demo)
-        </div>
-
-        <p>
-            Aha ni ho video cyangwa lesson content izajya ijya.
-        </p>
-
-        <button onclick="backCourse()">
-            ⬅ Back To Course
-        </button>
-
-    </div>
 
 </div>
-
-<script>
-
-function openCourse(name){
-    document.getElementById("home").classList.add("hidden");
-
-    document.getElementById("coursePage")
-        .classList.remove("hidden");
-
-    document.getElementById("courseTitle")
-        .innerText = name;
-}
-
-function openLesson(){
-    document.getElementById("coursePage")
-        .classList.add("hidden");
-
-    document.getElementById("lessonPage")
-        .classList.remove("hidden");
-}
-
-function backHome(){
-    document.getElementById("coursePage")
-        .classList.add("hidden");
-
-    document.getElementById("home")
-        .classList.remove("hidden");
-}
-
-function backCourse(){
-    document.getElementById("lessonPage")
-        .classList.add("hidden");
-
-    document.getElementById("coursePage")
-        .classList.remove("hidden");
-}
-
-</script>
-<script>
-function goToLevels() {
-  window.location.href = "levels.html";
-}
-    </script>
-</body>
-  </html>
