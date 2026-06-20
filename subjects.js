@@ -169,9 +169,19 @@ subjects.forEach(subject => {
 
   card.onclick = () => {
 
-    localStorage.setItem("subject", subject);
+if(subject !== "Mathematics"){
 
-    window.location.href = "lessons.html";
+alert("Lesson z'iri somo ntizirashyirwamo.");
+
+return;
+
+}
+
+localStorage.setItem("subject",subject);
+
+window.location.href = "lessons.html";
+
+};
 
   };
 
