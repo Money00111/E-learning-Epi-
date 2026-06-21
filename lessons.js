@@ -16,7 +16,53 @@ const script = document.createElement("script");
 script.src = files[subject];
 
 script.onload = () => {
+if(subject === "quiz"){
 
+let score = 0;
+
+window.lessons.forEach((q, index)=>{
+
+container.innerHTML += `
+<div class="card">
+
+<img src="${q.image}" width="100%" style="border-radius:10px;">
+
+<h3>${q.question}</h3>
+
+<div id="options-${index}"></div>
+
+</div>
+`;
+
+q.options.forEach((opt,i)=>{
+
+setTimeout(()=>{
+
+document.getElementById(`options-${index}`).innerHTML += `
+<button onclick="checkAnswer(${index},${i})">
+${opt}
+</button><br><br>
+`;
+
+},0);
+
+});
+
+});
+
+window.checkAnswer = function(qIndex, selected){
+
+if(window.lessons[qIndex].answer === selected){
+score++;
+}
+
+document.getElementById("title").innerText =
+"Score: " + score + "/" + window.lessons.length;
+
+};
+
+return;
+}
 // check data
 if (!window.lessons || window.lessons.length === 0) {
 container.innerHTML = "<h2>Nta masomo ahari</h2>";
