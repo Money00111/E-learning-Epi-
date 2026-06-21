@@ -1,92 +1,313 @@
-const container = document.getElementById("container");
 
-const subject = localStorage.getItem("subject");
+let current=0;
 
-// file mapping
-const files = {
-signs: "data/signs.js",
-lights: "data/lights.js",
-warnings: "data/warnings.js",
-driving: "data/driving.js",
-quiz: "data/quiz.js"
-};
+let score=0;
 
-// load selected subject file
-const script = document.createElement("script");
-script.src = files[subject];
+showQuestion();
 
-script.onload = () => {
-if(subject === "quiz"){
 
-let score = 0;
 
-window.lessons.forEach((q, index)=>{
+function showQuestion(){
 
-container.innerHTML += `
-<div class="card">
 
-<img src="${q.image}" width="100%" style="border-radius:10px;">
+const q=quizQuestions[current];
 
-<h3>${q.question}</h3>
 
-<div id="options-${index}"></div>
+container.innerHTML=`
+
+<div class="quiz-card">
+
+
+<img src="${q.image}"
+
+class="quiz-image">
+
+
+
+<h2>
+
+${q.question}
+
+</h2>
+
+
+
+<div id="options">
 
 </div>
+
+
+
+<div id="feed"
+
+class="feedback">
+
+</div>
+
+
+
+<button onclick="nextQuestion()">
+
+Next Question
+
+</button>
+
+
+
+</div>
+
 `;
 
-q.options.forEach((opt,i)=>{
 
-setTimeout(()=>{
 
-document.getElementById(`options-${index}`).innerHTML += `
-<button onclick="checkAnswer(${index},${i})">
-${opt}
-</button><br><br>
+const opt=
+
+document.getElementById(
+
+"options"
+
+);
+
+
+
+q.options.forEach(
+
+(option,index)=>{
+
+
+opt.innerHTML+=`
+
+
+<div
+
+class="option"
+
+onclick="checkAnswer(${index})"
+
+>
+
+
+${String.fromCharCode(65+index)}
+
+&nbsp;&nbsp;
+
+
+${option}
+
+
+</div>
+
+
 `;
 
-},0);
+
 
 });
 
-});
 
-window.checkAnswer = function(qIndex, selected){
+}
 
-if(window.lessons[qIndex].answer === selected){
+
+
+
+function checkAnswer(i){
+
+
+const q=
+
+quizQuestions[current];
+
+
+
+const options=
+
+document.querySelectorAll(
+
+".option"
+
+);
+
+
+
+options.forEach(
+
+o=>o.style.pointerEvents=
+
+"none"
+
+);
+
+
+
+const feed=
+
+document.getElementById(
+
+"feed"
+
+);
+
+
+
+if(i===q.answer){
+
+
+options[i].classList.add(
+
+"correct"
+
+);
+
+
 score++;
-}
 
-document.getElementById("title").innerText =
-"Score: " + score + "/" + window.lessons.length;
 
-};
 
-return;
-}
-// check data
-if (!window.lessons || window.lessons.length === 0) {
-container.innerHTML = "<h2>Nta masomo ahari</h2>";
-return;
-}
+feed.className=
 
-// show lessons
-window.lessons.forEach((item) => {
+"feedback correct";
 
-container.innerHTML += `
-<div class="card">
-<h3>${item.title}</h3>
-<p>${item.text}</p>
-</div>
+
+feed.innerHTML=`
+
+✅ Ni ukuri!
+
+<br>
+
+${q.options[q.answer]}
+
 `;
 
-});
-
-};
-
-// error handling
-script.onerror = () => {
-container.innerHTML = "<h2>File y'amasomo ntibashije gufunguka</h2>";
-};
 
 
-document.body.appendChild(script);
+}
+
+
+else{
+
+
+options[i].classList.add(
+
+"wrong"
+
+);
+
+
+options[q.answer]
+
+.classList.add(
+
+"correct"
+
+);
+
+
+
+feed.className=
+
+"feedback wrong";
+
+
+feed.innerHTML=`
+
+❌ Oya
+
+
+<br>
+
+
+Igisubizo ni:
+
+
+${q.options[q.answer]}
+
+`;
+
+
+
+}
+
+
+feed.style.display=
+
+"block";
+
+
+
+document.getElementById(
+
+"subjectTitle"
+
+).innerHTML=
+
+
+"🏆 Score : "
+
++score+
+
+"/"+
+
+quizQuestions.length;
+
+
+
+}
+
+
+
+function nextQuestion(){
+
+
+current++;
+
+
+
+if(
+
+current<
+
+quizQuestions.length
+
+){
+
+showQuestion();
+
+}
+
+
+else{
+
+
+container.innerHTML=`
+
+<h1>
+
+Quiz Yarangiye
+
+</h1>
+
+
+<h2>
+
+Score
+
+${score}
+
+
+/
+
+${quizQuestions.length}
+
+
+</h2>
+
+
+`;
+
+
+
+}
+
+
+
+}
