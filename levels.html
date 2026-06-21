@@ -90,7 +90,39 @@ cursor:pointer;
 </button>
 
 </div>
+<div class="card" onclick="openSubject('signs')">
+🛑 Ibyapa byo mu Muhanda
+</div>
 
+<div class="card" onclick="openSubject('lights')">
+🚦 Amatara yo mu Muhanda
+</div>
+
+<div class="card" onclick="openSubject('warnings')">
+⚠️ Ibimenyetso by'Iburira
+</div>
+
+<div class="card" onclick="openSubject('driving')">
+🚘 Uburyo bwo Gutwara
+</div>
+
+<div class="card" onclick="openSubject('quiz')">
+📝 Ibibazo n'Ibizamini
+</div>
+
+<script>
+function openSubject(subject){
+
+localStorage.setItem(
+"subject",
+subject
+);
+
+window.location.href =
+"lessons.html";
+
+}
+  </script>
 <script>
 
 function goHome(){
