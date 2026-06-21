@@ -1,52 +1,22 @@
-const container =
-document.getElementById("lessonsContainer");
+<!DOCTYPE html>
+<html>
+<head>
 
-// Force isolation (IMPORTANT FIX)
-const questions = window.questions || [];
+<meta charset="UTF-8">
 
-// Reset global immediately to avoid leaking to other subjects
-window.questions = null;
+<title>Lessons</title>
 
-if (questions.length === 0) {
+<link rel="stylesheet" href="style.css">
 
-container.innerHTML = `
-<h2>No lessons found</h2>
-`;
+</head>
 
-} else {
+<body>
 
-questions.forEach((q, index) => {
+<h2 id="title"></h2>
 
-const div = document.createElement("div");
-div.className = "qa-card";
+<div id="container"></div>
 
-div.innerHTML = `
-<h3>${q.question}</h3>
+<script src="lessons.js"></script>
 
-<button class="show-btn">Show Answer</button>
-
-<div class="answer">${q.answer}</div>
-`;
-
-const btn = div.querySelector(".show-btn");
-const ans = div.querySelector(".answer");
-
-ans.style.display = "none";
-
-btn.onclick = () => {
-
-if (ans.style.display === "none") {
-ans.style.display = "block";
-btn.innerText = "Hide Answer";
-} else {
-ans.style.display = "none";
-btn.innerText = "Show Answer";
-}
-
-};
-
-container.appendChild(div);
-
-});
-
-  }
+</body>
+</html>
