@@ -1,29 +1,67 @@
+const container = document.getElementById("lessonsContainer");
 
-let current=0;
+let current = 0;
+let score = 0;
 
-let score=0;
+
+// ===== START =====
+
 if (window.lessons) {
+
     showLessons();
+
 }
+
 else if (window.quizQuestions) {
+
     showQuestion();
+
 }
-showQuestion();
+
+else{
+
+container.innerHTML="<h2>No lessons available</h2>";
+
+}
+
+
+
+// ===== LESSONS =====
+
 function showLessons(){
 
 container.innerHTML="";
 
+
 window.lessons.forEach((lesson)=>{
+
 
 container.innerHTML += `
 
 <div class="qa-card">
 
-<img src="${lesson.image}" class="lesson-image">
 
-<h3>${lesson.title}</h3>
+<img src="${lesson.image}"
 
-<p>${lesson.text}</p>
+class="lesson-image">
+
+
+
+<h3>
+
+${lesson.title}
+
+</h3>
+
+
+
+<p>
+
+${lesson.text}
+
+</p>
+
+
 
 <button class="show-btn">
 
@@ -31,35 +69,132 @@ Show Answer
 
 </button>
 
-<div class="answer">
+
+
+<div class="answer"
+
+style="display:none;">
 
 ${lesson.answer}
 
 </div>
 
+
+
 </div>
 
 `;
 
+
 });
 
+
+
+document.querySelectorAll(
+
+".show-btn"
+
+)
+
+.forEach(btn=>{
+
+
+btn.onclick=function(){
+
+
+const ans=
+
+this.nextElementSibling;
+
+
+
+if(
+
+ans.style.display===
+
+"none"
+
+){
+
+
+ans.style.display=
+
+"block";
+
+
+this.innerText=
+
+"Hide Answer";
+
+
 }
+
+
+else{
+
+
+ans.style.display=
+
+"none";
+
+
+this.innerText=
+
+"Show Answer";
+
+
+}
+
+
+
+};
+
+
+});
+
+
+
+}
+
+
+
+// ===== QUIZ =====
 
 
 function showQuestion(){
 
 
-const q=quizQuestions[current];
+if(
+
+!window.quizQuestions
+
+){
+
+return;
+
+}
+
+
+
+const q=
+
+quizQuestions[current];
+
 
 
 container.innerHTML=`
 
+
 <div class="quiz-card">
 
 
-<img src="${q.image}"
+<img
 
-class="quiz-image">
+src="${q.image}"
+
+class="quiz-image"
+
+>
 
 
 
@@ -77,19 +212,47 @@ ${q.question}
 
 
 
-<div id="feed"
+<div
 
-class="feedback">
+id="feed"
+
+class="feedback"
+
+style="display:none;"
+
+>
 
 </div>
 
 
 
-<button onclick="nextQuestion()">
+<div class="nav-buttons">
 
-Next Question
+
+<button
+
+onclick="previousQuestion()"
+
+>
+
+⬅ Previous
 
 </button>
+
+
+
+<button
+
+onclick="nextQuestion()"
+
+>
+
+Next ➡
+
+</button>
+
+
+</div>
 
 
 
@@ -116,7 +279,6 @@ q.options.forEach(
 
 opt.innerHTML+=`
 
-
 <div
 
 class="option"
@@ -126,9 +288,13 @@ onclick="checkAnswer(${index})"
 >
 
 
-${String.fromCharCode(65+index)}
+${String.fromCharCode(
 
-&nbsp;&nbsp;
+65+index
+
+)}
+
+&nbsp;
 
 
 ${option}
@@ -136,9 +302,7 @@ ${option}
 
 </div>
 
-
 `;
-
 
 
 });
@@ -188,14 +352,21 @@ document.getElementById(
 
 
 
-if(i===q.answer){
+if(
+
+i===q.answer
+
+){
 
 
-options[i].classList.add(
+options[i]
+
+.classList.add(
 
 "correct"
 
 );
+
 
 
 score++;
@@ -207,16 +378,20 @@ feed.className=
 "feedback correct";
 
 
+
 feed.innerHTML=`
 
-✅ Ni ukuri!
+
+✅ Ni ukuri
+
 
 <br>
 
+
 ${q.options[q.answer]}
 
-`;
 
+`;
 
 
 }
@@ -225,11 +400,14 @@ ${q.options[q.answer]}
 else{
 
 
-options[i].classList.add(
+options[i]
+
+.classList.add(
 
 "wrong"
 
 );
+
 
 
 options[q.answer]
@@ -247,7 +425,9 @@ feed.className=
 "feedback wrong";
 
 
+
 feed.innerHTML=`
+
 
 ❌ Oya
 
@@ -260,11 +440,12 @@ Igisubizo ni:
 
 ${q.options[q.answer]}
 
+
 `;
 
 
-
 }
+
 
 
 feed.style.display=
@@ -282,15 +463,22 @@ document.getElementById(
 
 "🏆 Score : "
 
-+score+
++
 
-"/"+
+score
+
++
+
+"/"
+
++
 
 quizQuestions.length;
 
 
 
 }
+
 
 
 
@@ -319,11 +507,13 @@ else{
 
 container.innerHTML=`
 
+
 <h1>
 
-Quiz Yarangiye
+🎉 Quiz Yarangiye
 
 </h1>
+
 
 
 <h2>
@@ -332,11 +522,9 @@ Score
 
 ${score}
 
-
 /
 
 ${quizQuestions.length}
-
 
 </h2>
 
@@ -344,9 +532,32 @@ ${quizQuestions.length}
 `;
 
 
-
 }
 
 
 
 }
+
+
+
+function previousQuestion(){
+
+
+if(
+
+current>0
+
+){
+
+
+current--;
+
+
+showQuestion();
+
+
+}
+
+
+
+    }
