@@ -2,7 +2,12 @@
 let current=0;
 
 let score=0;
-
+if (window.lessons) {
+    showLessons();
+}
+else if (window.quizQuestions) {
+    showQuestion();
+}
 showQuestion();
 
 
