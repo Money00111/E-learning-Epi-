@@ -1,18 +1,129 @@
-<!-- HOME PAGE -->
-<div id="home">
+<!DOCTYPE html>
+<html lang="rw">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Road Rules Learning</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#0f172a;
+color:white;
+}
+
+header{
+background:#1e293b;
+padding:18px;
+text-align:center;
+font-size:24px;
+font-weight:bold;
+box-shadow:0 2px 10px rgba(0,0,0,.3);
+}
+
+.container{
+padding:20px;
+max-width:500px;
+margin:auto;
+}
+
+.search{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+outline:none;
+margin-bottom:20px;
+font-size:16px;
+background:#334155;
+color:white;
+}
+
+.search::placeholder{
+color:#cbd5e1;
+}
+
+.card{
+background:#1e293b;
+padding:18px;
+border-radius:12px;
+margin-bottom:15px;
+cursor:pointer;
+transition:0.3s;
+font-size:18px;
+font-weight:bold;
+}
+
+.card:hover{
+background:#334155;
+transform:translateY(-2px);
+}
+
+.links{
+margin-top:20px;
+text-align:center;
+}
+
+.links a{
+color:#38bdf8;
+text-decoration:none;
+margin:0 10px;
+font-weight:bold;
+}
+
+.links a:hover{
+text-decoration:underline;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+🚗 Road Rules Learning
+</header>
+
+<div class="container">
 
 <input
 class="search"
-placeholder="Search courses..."
+placeholder="Search lessons..."
 >
 
 <div class="card" onclick="goToLevels()">
-🚗 >Amategeko y'Umuhanda<
+🚗 Amategeko y'Umuhanda
 </div>
 
-<br>
+<div class="links">
 
-<a href="login.html">Login</a>
-<a href="register.html">Create Account</a>
+<a href="login.html">
+Login
+</a>
+
+<a href="register.html">
+Create Account
+</a>
 
 </div>
+
+</div>
+
+<script>
+
+function goToLevels(){
+
+window.location.href = "levels.html";
+
+}
+
+</script>
+
+</body>
+  </html>
