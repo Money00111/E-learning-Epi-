@@ -9,7 +9,41 @@ else if (window.quizQuestions) {
     showQuestion();
 }
 showQuestion();
+function showLessons(){
 
+container.innerHTML="";
+
+window.lessons.forEach((lesson)=>{
+
+container.innerHTML += `
+
+<div class="qa-card">
+
+<img src="${lesson.image}" class="lesson-image">
+
+<h3>${lesson.title}</h3>
+
+<p>${lesson.text}</p>
+
+<button class="show-btn">
+
+Show Answer
+
+</button>
+
+<div class="answer">
+
+${lesson.answer}
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
 
 
 function showQuestion(){
