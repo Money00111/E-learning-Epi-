@@ -1,18 +1,36 @@
 window.lessons = [
 
 {
-title: "Quiz 1 📝",
-text: "Itara ritukura risobanura iki? A) Komeza B) Hagarara C) Vuba"
+image: "images/stop.png",
+question: "Iki cyapa gisobanura iki?",
+options: [
+"Gukomeza",
+"Hagarara",
+"Kongera umuvuduko"
+],
+answer: 1
 },
 
 {
-title: "Quiz 2 📝",
-text: "STOP sign isobanura iki?"
+image: "images/no_entry.png",
+question: "Iki cyapa kivuze iki?",
+options: [
+"Kwinjira",
+"Ntibyemewe kwinjira",
+"Kunyura vuba"
+],
+answer: 1
 },
 
 {
-title: "Quiz 3 📝",
-text: "Ni iki kigomba kubanza kurebwa mbere yo kugenda?"
+image: "images/traffic_light.png",
+question: "Itara ritukura risobanura iki?",
+options: [
+"Komeza",
+"Hagarara",
+"Genda vuba"
+],
+answer: 1
 }
 
 ];
