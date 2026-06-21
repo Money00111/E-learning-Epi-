@@ -1,6 +1,5 @@
-const questions = [
-
-{
+window.lessons = [
+  {
 title: "Itara Ritukura",
 text: "Ugomba guhagarara."
 },
