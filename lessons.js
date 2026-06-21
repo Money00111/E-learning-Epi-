@@ -1,22 +1,45 @@
-<!DOCTYPE html>
-<html>
-<head>
+const container = document.getElementById("container");
 
-<meta charset="UTF-8">
+const subject = localStorage.getItem("subject");
 
-<title>Lessons</title>
+// file mapping
+const files = {
+signs: "data/signs.js",
+lights: "data/lights.js",
+warnings: "data/warnings.js",
+driving: "data/driving.js",
+quiz: "data/quiz.js"
+};
 
-<link rel="stylesheet" href="style.css">
+// load selected subject file
+const script = document.createElement("script");
+script.src = files[subject];
 
-</head>
+script.onload = () => {
 
-<body>
+// check data
+if (!window.lessons || window.lessons.length === 0) {
+container.innerHTML = "<h2>Nta masomo ahari</h2>";
+return;
+}
 
-<h2 id="title"></h2>
+// show lessons
+window.lessons.forEach((item) => {
 
-<div id="container"></div>
+container.innerHTML += `
+<div class="card">
+<h3>${item.title}</h3>
+<p>${item.text}</p>
+</div>
+`;
 
-<script src="lessons.js"></script>
+});
 
-</body>
-</html>
+};
+
+// error handling
+script.onerror = () => {
+container.innerHTML = "<h2>File y'amasomo ntibashije gufunguka</h2>";
+};
+
+document.body.appendChild(script);
