@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ikizamini</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+padding:20px;
+}
+
+.question{
+background:#1e293b;
+padding:15px;
+border-radius:10px;
+margin-bottom:15px;
+}
+
+button{
+padding:10px 15px;
+border:none;
+border-radius:8px;
+background:#38bdf8;
+font-weight:bold;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>📝 Ikizamini cy'Amategeko y'Umuhanda</h2>
+
+<div class="question">
+
+<p>1. Itara ritukura risobanura iki?</p>
+
+<input type="radio" name="q1"> Komeza<br>
+<input type="radio" name="q1" id="correct"> Hagarara<br>
+<input type="radio" name="q1"> Ongera umuvuduko<br>
+
+</div>
+
+<button onclick="checkScore()">
+Reba Amanota
+</button>
+
+<h3 id="score"></h3>
+
+<script>
+
+function checkScore(){
+
+let marks = 0;
+
+if(document.getElementById("correct").checked){
+marks++;
+}
+
+document.getElementById("score").innerHTML =
+"Amanota yawe: " + marks + "/1";
+
+}
+
+</script>
+
+</body>
+</html>
