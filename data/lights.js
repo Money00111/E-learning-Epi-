@@ -1,12 +1,27 @@
 window.lessons = [
-  {
-title: "Itara Ritukura",
-text: "Ugomba guhagarara."
+
+{
+
+image:"images/red-light.png",
+
+title:"Itara Ritukura",
+
+text:"Ugomba guhagarara.",
+
+answer:"Iyo itara ritukura ryaka, ugomba guhagarara burundu."
+
 },
 
 {
-title: "Itara Ry'Icyatsi",
-text: "Urashobora gukomeza."
+
+image:"images/green-light.png",
+
+title:"Itara Ry'Icyatsi",
+
+text:"Urashobora gukomeza.",
+
+answer:"Iyo itara ry'icyatsi ryaka, ushobora gukomeza."
+
 }
 
 ];
