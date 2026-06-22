@@ -8,12 +8,138 @@ let score = 0;
 
 if (window.lessons) {
 
-    showLessons();
+    function showLessons(){
+
+container.innerHTML="";
+
+
+window.lessons.forEach((lesson)=>{
+
+
+container.innerHTML += `
+
+
+<div class="lesson-card">
+
+
+<img
+
+src="${lesson.image}"
+
+class="lesson-image"
+
+>
+
+
+
+<h2>
+
+${lesson.title}
+
+</h2>
+
+
+
+<p>
+
+${lesson.text}
+
+</p>
+
+
+
+<button class="show-btn">
+
+Show Answer
+
+</button>
+
+
+
+<div
+
+class="answer"
+
+style="display:none"
+
+>
+
+${lesson.answer}
+
+</div>
+
+
+
+</div>
+
+`;
+
+
+});
+
+
+
+document.querySelectorAll(
+
+".show-btn"
+
+)
+
+.forEach(btn=>{
+
+
+btn.onclick=function(){
+
+
+const ans=
+
+this.nextElementSibling;
+
+
+
+if(
+
+ans.style.display==="none"
+
+){
+
+
+ans.style.display=
+
+"block";
+
+
+this.innerText=
+
+"Hide Answer";
+
 
 }
 
-else if (window.quizQuestions) {
 
+else{
+
+
+ans.style.display=
+
+"none";
+
+
+this.innerText=
+
+"Show Answer";
+
+
+}
+
+
+};
+
+
+});
+
+
+}
     showQuestion();
 
 }
