@@ -1,22 +1,26 @@
-const container = document.getElementById("lessonsContainer");
+const content=
 
-let current = 0;
-let score = 0;
+document.getElementById(
 
+"content"
 
-// ===== START =====
-
-if (window.lessons) {
-
-    function showLessons(){
-
-container.innerHTML="";
+);
 
 
-window.lessons.forEach((lesson)=>{
+let current=0;
 
 
-container.innerHTML += `
+
+function showLesson(){
+
+
+const l=
+
+window.lessons[current];
+
+
+
+content.innerHTML=`
 
 
 <div class="lesson-card">
@@ -24,7 +28,7 @@ container.innerHTML += `
 
 <img
 
-src="${lesson.image}"
+src="${l.image}"
 
 class="lesson-image"
 
@@ -34,7 +38,7 @@ class="lesson-image"
 
 <h2>
 
-${lesson.title}
+${l.title}
 
 </h2>
 
@@ -42,13 +46,13 @@ ${lesson.title}
 
 <p>
 
-${lesson.text}
+${l.text}
 
 </p>
 
 
 
-<button class="show-btn">
+<button id="show">
 
 Show Answer
 
@@ -58,324 +62,14 @@ Show Answer
 
 <div
 
-class="answer"
-
-style="display:none"
-
->
-
-${lesson.answer}
-
-</div>
-
-
-
-</div>
-
-`;
-
-
-});
-
-
-
-document.querySelectorAll(
-
-".show-btn"
-
-)
-
-.forEach(btn=>{
-
-
-btn.onclick=function(){
-
-
-const ans=
-
-this.nextElementSibling;
-
-
-
-if(
-
-ans.style.display==="none"
-
-){
-
-
-ans.style.display=
-
-"block";
-
-
-this.innerText=
-
-"Hide Answer";
-
-
-}
-
-
-else{
-
-
-ans.style.display=
-
-"none";
-
-
-this.innerText=
-
-"Show Answer";
-
-
-}
-
-
-};
-
-
-});
-
-
-}
-    showQuestion();
-
-}
-
-else{
-
-container.innerHTML="<h2>No lessons available</h2>";
-
-}
-
-
-
-// ===== LESSONS =====
-
-function showLessons(){
-
-container.innerHTML="";
-
-
-window.lessons.forEach((lesson)=>{
-
-
-container.innerHTML += `
-
-<div class="qa-card">
-
-
-<img src="${lesson.image}"
-
-class="lesson-image">
-
-
-
-<h3>
-
-${lesson.title}
-
-</h3>
-
-
-
-<p>
-
-${lesson.text}
-
-</p>
-
-
-
-<button class="show-btn">
-
-Show Answer
-
-</button>
-
-
-
-<div class="answer"
-
-style="display:none;">
-
-${lesson.answer}
-
-</div>
-
-
-
-</div>
-
-`;
-
-
-});
-
-
-
-document.querySelectorAll(
-
-".show-btn"
-
-)
-
-.forEach(btn=>{
-
-
-btn.onclick=function(){
-
-
-const ans=
-
-this.nextElementSibling;
-
-
-
-if(
-
-ans.style.display===
-
-"none"
-
-){
-
-
-ans.style.display=
-
-"block";
-
-
-this.innerText=
-
-"Hide Answer";
-
-
-}
-
-
-else{
-
-
-ans.style.display=
-
-"none";
-
-
-this.innerText=
-
-"Show Answer";
-
-
-}
-
-
-
-};
-
-
-});
-
-
-
-}
-
-
-
-// ===== QUIZ =====
-
-
-function showQuestion(){
-
-
-if(
-
-!window.quizQuestions
-
-){
-
-return;
-
-}
-
-
-
-const q=
-
-quizQuestions[current];
-
-
-
-container.innerHTML=`
-
-
-<div class="quiz-card">
-
-
-<img
-
-src="${q.image}"
-
-class="quiz-image"
-
->
-
-
-
-<h2>
-
-${q.question}
-
-</h2>
-
-
-
-<div id="options">
-
-</div>
-
-
-
-<div
-
-id="feed"
-
-class="feedback"
+id="answer"
 
 style="display:none;"
 
 >
 
-</div>
 
-
-
-<div class="nav-buttons">
-
-
-<button
-
-onclick="previousQuestion()"
-
->
-
-⬅ Previous
-
-</button>
-
-
-
-<button
-
-onclick="nextQuestion()"
-
->
-
-Next ➡
-
-</button>
+${l.answer}
 
 
 </div>
@@ -388,91 +82,18 @@ Next ➡
 
 
 
-const opt=
+document.getElementById(
+
+"show"
+
+).onclick=()=>{
+
+
+const a=
 
 document.getElementById(
 
-"options"
-
-);
-
-
-
-q.options.forEach(
-
-(option,index)=>{
-
-
-opt.innerHTML+=`
-
-<div
-
-class="option"
-
-onclick="checkAnswer(${index})"
-
->
-
-
-${String.fromCharCode(
-
-65+index
-
-)}
-
-&nbsp;
-
-
-${option}
-
-
-</div>
-
-`;
-
-
-});
-
-
-}
-
-
-
-
-function checkAnswer(i){
-
-
-const q=
-
-quizQuestions[current];
-
-
-
-const options=
-
-document.querySelectorAll(
-
-".option"
-
-);
-
-
-
-options.forEach(
-
-o=>o.style.pointerEvents=
-
-"none"
-
-);
-
-
-
-const feed=
-
-document.getElementById(
-
-"feed"
+"answer"
 
 );
 
@@ -480,44 +101,16 @@ document.getElementById(
 
 if(
 
-i===q.answer
+a.style.display===
+
+"none"
 
 ){
 
 
-options[i]
+a.style.display=
 
-.classList.add(
-
-"correct"
-
-);
-
-
-
-score++;
-
-
-
-feed.className=
-
-"feedback correct";
-
-
-
-feed.innerHTML=`
-
-
-✅ Ni ukuri
-
-
-<br>
-
-
-${q.options[q.answer]}
-
-
-`;
+"block";
 
 
 }
@@ -526,80 +119,68 @@ ${q.options[q.answer]}
 else{
 
 
-options[i]
+a.style.display=
 
-.classList.add(
-
-"wrong"
-
-);
-
-
-
-options[q.answer]
-
-.classList.add(
-
-"correct"
-
-);
-
-
-
-feed.className=
-
-"feedback wrong";
-
-
-
-feed.innerHTML=`
-
-
-❌ Oya
-
-
-<br>
-
-
-Igisubizo ni:
-
-
-${q.options[q.answer]}
-
-
-`;
+"none";
 
 
 }
 
 
 
-feed.style.display=
+};
 
-"block";
+
+
+updateProgress();
+
+
+
+}
+
+
+
+function updateProgress(){
+
+
+let p=
+
+Math.round(
+
+(
+
+(current+1)
+
+/
+
+
+lessons.length
+
+)
+
+*100
+
+);
 
 
 
 document.getElementById(
 
-"subjectTitle"
+"bar"
+
+).style.width=
+
+p+"%";
+
+
+
+document.getElementById(
+
+"percent"
 
 ).innerHTML=
 
-
-"🏆 Score : "
-
-+
-
-score
-
-+
-
-"/"
-
-+
-
-quizQuestions.length;
+p+"%";
 
 
 
@@ -607,55 +188,22 @@ quizQuestions.length;
 
 
 
-
-function nextQuestion(){
-
-
-current++;
-
+function nextLesson(){
 
 
 if(
 
 current<
 
-quizQuestions.length
+lessons.length-1
 
 ){
 
-showQuestion();
 
-}
-
-
-else{
+current++;
 
 
-container.innerHTML=`
-
-
-<h1>
-
-🎉 Quiz Yarangiye
-
-</h1>
-
-
-
-<h2>
-
-Score
-
-${score}
-
-/
-
-${quizQuestions.length}
-
-</h2>
-
-
-`;
+showLesson();
 
 
 }
@@ -666,7 +214,7 @@ ${quizQuestions.length}
 
 
 
-function previousQuestion(){
+function previousLesson(){
 
 
 if(
@@ -679,11 +227,15 @@ current>0
 current--;
 
 
-showQuestion();
+showLesson();
 
 
 }
 
 
 
-    }
+}
+
+
+
+showLesson();
