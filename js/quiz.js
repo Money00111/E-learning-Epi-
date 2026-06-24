@@ -273,12 +273,75 @@ showQuestion();
 else{
 
 
-finishQuiz();
+function finishQuiz(){
+
+let status =
+
+score>=Math.ceil(
+
+quizQuestions.length*0.7
+
+)
+
+?
+
+"PASS"
+
+:
+
+"FAIL";
 
 
-}
+localStorage.setItem(
+
+"score",
+
+score
+
+);
 
 
+container.innerHTML=`
+
+
+<div class="certificate">
+
+
+<h1>
+
+🏆 Certificate
+
+</h1>
+
+
+
+<h2>
+
+${status}
+
+</h2>
+
+
+
+<p>
+
+Score
+
+${score}
+
+
+/
+
+${quizQuestions.length}
+
+</p>
+
+
+
+</div>
+
+
+`;
 
 }
 
