@@ -68,6 +68,58 @@ body{
   transition:1s;
 }
 
+.payment-card{
+
+max-width:400px;
+
+margin:50px auto;
+
+background:white;
+
+padding:30px;
+
+border-radius:20px;
+
+text-align:center;
+
+box-shadow:0 0 10px rgba(0,0,0,.1);
+
+}
+
+
+.payment-card input{
+
+width:100%;
+
+padding:15px;
+
+margin-top:20px;
+
+border:1px solid #ddd;
+
+border-radius:10px;
+
+}
+
+
+.payment-card button{
+
+margin-top:20px;
+
+padding:15px;
+
+width:100%;
+
+background:#2563eb;
+
+color:white;
+
+border:none;
+
+border-radius:10px;
+
+  }
+
 .quiz-container{
 
 max-width:700px;
