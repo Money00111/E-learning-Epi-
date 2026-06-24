@@ -1,22 +1,94 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
 <meta charset="UTF-8">
 
+<meta name="viewport"
+content="width=device-width,initial-scale=1">
+
 <title>Lessons</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+href="css/style.css">
 
 </head>
 
 <body>
 
-<h2 id="title"></h2>
 
-<div id="container"></div>
+<div class="lesson-container">
 
-<script src="lessons.js"></script>
+
+<h1 id="lessonTitle">
+
+Traffic Signs
+
+</h1>
+
+
+
+<div class="progress-box">
+
+
+<div class="progress">
+
+
+<div id="bar">
+
+</div>
+
+
+</div>
+
+
+
+<p id="percent">
+
+0%
+
+</p>
+
+
+</div>
+
+
+
+<div id="content">
+
+</div>
+
+
+
+<div class="nav-buttons">
+
+
+<button onclick="previousLesson()">
+
+⬅ Previous
+
+</button>
+
+
+
+<button onclick="nextLesson()">
+
+Next ➡
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+<script src="data/signs.js"></script>
+
+<script src="js/lessons.js"></script>
 
 </body>
+
 </html>
