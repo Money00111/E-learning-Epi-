@@ -1,53 +1,23 @@
 let progress = 0;
 
-
 setInterval(()=>{
 
-if(progress<75){
-
+if(progress < 80){
 progress++;
-
-document.getElementById(
-
-"bar"
-
-).style.width=
-
-progress+"%";
-
-
-document.getElementById(
-
-"percent"
-
-).innerText=
-
-progress+"%";
-
+document.getElementById("bar").style.width = progress + "%";
+document.getElementById("percent").innerText = progress + "%";
 }
-
 
 },100);
 
 
-
 function openPage(page){
 
-localStorage.setItem(
+if(page === "quiz"){
+window.location.href = "quiz.html";
+}
+else{
+window.location.href = "lessons.html?type=" + page;
+}
 
-"page",
-
-page
-
-);
-
-
-alert(
-
-page+
-
-" page"
-
-);
-
-  }
+}
