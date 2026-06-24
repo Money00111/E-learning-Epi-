@@ -1,36 +1,47 @@
-window.lessons = [
+window.quizQuestions = [
 
 {
-image: "images/stop.png",
-question: "Iki cyapa gisobanura iki?",
-options: [
+
+image:"images/stop.png",
+
+question:"Iki cyapa gisobanura iki?",
+
+options:[
+
 "Gukomeza",
+
 "Hagarara",
-"Kongera umuvuduko"
+
+"Kongera umuvuduko",
+
+"Guhindukira"
+
 ],
-answer: 1
+
+answer:1
+
 },
 
 {
-image: "images/no_entry.png",
-question: "Iki cyapa kivuze iki?",
-options: [
-"Kwinjira",
-"Ntibyemewe kwinjira",
-"Kunyura vuba"
-],
-answer: 1
-},
 
-{
-image: "images/traffic_light.png",
-question: "Itara ritukura risobanura iki?",
-options: [
+image:"images/red-light.png",
+
+question:"Itara ritukura risobanura iki?",
+
+options:[
+
 "Komeza",
+
 "Hagarara",
-"Genda vuba"
+
+"Tegereza",
+
+"Vuba"
+
 ],
-answer: 1
+
+answer:1
+
 }
 
 ];
