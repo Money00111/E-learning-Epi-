@@ -2,93 +2,40 @@
 <html>
 
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width,initial-scale=1">
+<title>Lessons Pro</title>
 
-<title>Lessons</title>
-
-<link rel="stylesheet"
-href="css/style.css">
-
+<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
+<div class="lesson-app">
 
-<div class="lesson-container">
-
-
-<h1 id="lessonTitle">
-
-Traffic Signs
-
-</h1>
-
-
-
-<div class="progress-box">
-
+<h1 id="title">Lessons</h1>
 
 <div class="progress">
+<div id="bar"></div>
+</div>
 
+<p id="percent">0%</p>
 
-<div id="bar">
+<div id="lessonBox"></div>
+
+<div class="nav">
+
+<button onclick="prev()">⬅ Prev</button>
+
+<button onclick="next()">Next ➡</button>
 
 </div>
 
-
 </div>
 
-
-
-<p id="percent">
-
-0%
-
-</p>
-
-
-</div>
-
-
-
-<div id="content">
-
-</div>
-
-
-
-<div class="nav-buttons">
-
-
-<button onclick="previousLesson()">
-
-⬅ Previous
-
-</button>
-
-
-
-<button onclick="nextLesson()">
-
-Next ➡
-
-</button>
-
-
-</div>
-
-
-</div>
-
-
-<script src="data/signs.js"></script>
-
+<script src="data/lessons.js"></script>
 <script src="js/lessons.js"></script>
 
 </body>
-
 </html>
