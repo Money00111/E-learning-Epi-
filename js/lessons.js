@@ -1,269 +1,81 @@
 const subject = localStorage.getItem("subject");
 
-if(subject==="signs"){
-    const script=document.createElement("script");
-    script.src="data/signs.js";
-    document.body.appendChild(script);
+const content = document.getElementById("content");
 
-    script.onload=()=>{
-        show();
-    };
+let current = 0;
+let lessons = [];
+
+const files = {
+  signs: "data/signs.js",
+  lights: "data/lights.js",
+  warnings: "data/warnings.js",
+  driving: "data/driving.js"
+};
+
+const file = files[subject];
+
+if (!file) {
+  content.innerHTML = "<h2>No lessons available</h2>";
+} else {
+
+  const script = document.createElement("script");
+  script.src = file;
+
+  script.onload = () => {
+    lessons = window.lessons;
+    showLesson();
+    updateProgress();
+  };
+
+  document.body.appendChild(script);
 }
-
-else if(subject==="lights"){
-    const script=document.createElement("script");
-    script.src="data/lights.js";
-    document.body.appendChild(script);
-
-    script.onload=()=>{
-        show();
-    };
-      }
-
-const subject = localStorage.getItem("subject");
-
-if(!subject){
-document.getElementById("content").innerHTML =
-"<h2>No subject selected</h2>";
-}
-const content=
-
-document.getElementById(
-
-"content"
-
-);
-
-
-let current=0;
-
-
 
 function showLesson(){
 
+const l = lessons[current];
 
-const l=
-
-window.lessons[current];
-
-
-
-content.innerHTML=`
-
-
+content.innerHTML = `
 <div class="lesson-card">
 
+<img src="${l.image}" class="lesson-image">
 
-<img
+<h2>${l.title}</h2>
 
-src="${l.image}"
+<p>${l.text}</p>
 
-class="lesson-image"
+<button onclick="toggleAnswer()">Show Answer</button>
 
->
-
-
-
-<h2>
-
-${l.title}
-
-</h2>
-
-
-
-<p>
-
-${l.text}
-
-</p>
-
-
-
-<button id="show">
-
-Show Answer
-
-</button>
-
-
-
-<div
-
-id="answer"
-
-style="display:none;"
-
->
-
-
+<div id="answer" style="display:none;">
 ${l.answer}
-
-
 </div>
 
-
-
 </div>
-
 `;
-
-
-
-document.getElementById(
-
-"show"
-
-).onclick=()=>{
-
-
-const a=
-
-document.getElementById(
-
-"answer"
-
-);
-
-
-
-if(
-
-a.style.display===
-
-"none"
-
-){
-
-
-a.style.display=
-
-"block";
-
-
 }
 
-
-else{
-
-
-a.style.display=
-
-"none";
-
-
+function toggleAnswer(){
+const a = document.getElementById("answer");
+a.style.display = a.style.display === "none" ? "block" : "none";
 }
-
-
-
-};
-
-
-
-updateProgress();
-
-
-
-}
-
-
-
-function updateProgress(){
-
-
-let p=
-
-Math.round(
-
-(
-
-(current+1)
-
-/
-
-
-lessons.length
-
-)
-
-*100
-
-);
-
-
-
-document.getElementById(
-
-"bar"
-
-).style.width=
-
-p+"%";
-
-
-
-document.getElementById(
-
-"percent"
-
-).innerHTML=
-
-p+"%";
-
-
-
-}
-
-
 
 function nextLesson(){
-
-
-if(
-
-current<
-
-lessons.length-1
-
-){
-
-
+if(current < lessons.length - 1){
 current++;
-
-
 showLesson();
-
-
+updateProgress();
 }
-
-
-
 }
-
-
 
 function previousLesson(){
-
-
-if(
-
-current>0
-
-){
-
-
+if(current > 0){
 current--;
-
-
 showLesson();
-
-
+updateProgress();
+}
 }
 
-
-
+function updateProgress(){
+let p = Math.round(((current+1)/lessons.length)*100);
+document.getElementById("bar").style.width = p + "%";
+document.getElementById("percent").innerText = p + "%";
 }
-
-
-
-showLesson();
