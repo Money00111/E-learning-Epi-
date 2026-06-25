@@ -1,26 +1,37 @@
 window.lessons = [
 
 {
+image:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Traffic_lights_red.svg/512px-Traffic_lights_red.svg.png",
 
-image:"images/red-light.png",
+title:"ITARA RITUKURA 🔴",
 
-title:"Itara Ritukura",
+text:"Ugomba guhagarara burundu.",
 
-text:"Ugomba guhagarara.",
-
-answer:"Iyo itara ritukura ryaka, ugomba guhagarara burundu."
+answer:"Ntukomeze urugendo igihe itara ritukura ryaka."
 
 },
 
 {
 
-image:"images/green-light.png",
+image:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Traffic_lights_amber.svg/512px-Traffic_lights_amber.svg.png",
 
-title:"Itara Ry'Icyatsi",
+title:"ITARA RY'UMUHONDO 🟡",
+
+text:"Tegura guhagarara.",
+
+answer:"Gabanya umuvuduko kandi witegure guhagarara."
+
+},
+
+{
+
+image:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Traffic_lights_green.svg/512px-Traffic_lights_green.svg.png",
+
+title:"ITARA RY'ICYATSI 🟢",
 
 text:"Urashobora gukomeza.",
 
-answer:"Iyo itara ry'icyatsi ryaka, ushobora gukomeza."
+answer:"Komeza urugendo niba umuhanda utekanye."
 
 }
 
