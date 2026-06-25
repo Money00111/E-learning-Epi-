@@ -1,50 +1,74 @@
-const content=document.getElementById("lessonBox");
+const content = document.getElementById("lessonBox");
 
-let lessons=[];
+let lessons = [];
+let current = 0;
 
-let current=0;
+const subject = localStorage.getItem("subject");
 
-const script=document.createElement("script");
+const files = {
 
-const subject=
+signs:"data/signs.js",
 
-localStorage.getItem(
+lights:"data/lights.js",
 
-"subject"
+warnings:"data/warnings.js",
 
-);
-
-script.src=
-
-"data/"
-
-+
-
-subject
-
-+
-
-".js";
-
-script.onload=()=>{
-
-lessons=window.lessons;
-
-showLesson();
-
-updateProgress();
+driving:"data/driving.js"
 
 };
 
+
+const file = files[subject];
+
+
+if(!file){
+
+content.innerHTML="<h2>No lessons available</h2>";
+
+}
+
+
+else{
+
+
+const script=document.createElement("script");
+
+
+script.src=file;
+
+
+
+script.onload=()=>{
+
+
+lessons=window.lessons;
+
+
+showLesson();
+
+
+updateProgress();
+
+
+};
+
+
 document.body.appendChild(script);
+
+
+}
 
 
 
 function showLesson(){
 
+
 const l=lessons[current];
 
+
+
 content.innerHTML=`
+
 
 <div class="lesson-card">
 
@@ -54,10 +78,21 @@ content.innerHTML=`
 class="lesson-image">
 
 
-<h2>${l.title}</h2>
+
+<h2>
+
+${l.title}
+
+</h2>
 
 
-<p>${l.text}</p>
+
+<p>
+
+${l.text}
+
+</p>
+
 
 
 <button onclick="toggleAnswer()">
@@ -68,27 +103,42 @@ Show Answer
 
 
 
-<div id="answer"
-
-style="display:none;">
-
+<div id="answer">
 
 ${l.answer}
 
-
 </div>
 
 
+
 </div>
+
 
 `;
+
+
+
+document.getElementById(
+
+"answer"
+
+).style.display="none";
+
 
 }
 
 
+
 function toggleAnswer(){
 
-const a=document.getElementById("answer");
+
+const a=document.getElementById(
+
+"answer"
+
+);
+
+
 
 a.style.display=
 
@@ -102,25 +152,28 @@ a.style.display==="none"
 
 "none";
 
+
 }
 
 
 
 function nextLesson(){
 
-if(
 
-current<lessons.length-1
+if(current<lessons.length-1){
 
-){
 
 current++;
 
+
 showLesson();
+
 
 updateProgress();
 
+
 }
+
 
 }
 
@@ -128,15 +181,21 @@ updateProgress();
 
 function previousLesson(){
 
+
 if(current>0){
+
 
 current--;
 
+
 showLesson();
+
 
 updateProgress();
 
+
 }
+
 
 }
 
@@ -144,13 +203,16 @@ updateProgress();
 
 function updateProgress(){
 
+
 let p=Math.round(
+
 
 ((current+1)
 
 /lessons.length)
 
 *100
+
 
 );
 
@@ -174,5 +236,5 @@ document.getElementById(
 
 p+"%";
 
-}
 
+  }
