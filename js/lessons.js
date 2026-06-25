@@ -6,7 +6,25 @@ let current=0;
 
 const script=document.createElement("script");
 
-script.src="data/signs.js";
+const subject=
+
+localStorage.getItem(
+
+"subject"
+
+);
+
+script.src=
+
+"data/"
+
++
+
+subject
+
++
+
+".js";
 
 script.onload=()=>{
 
