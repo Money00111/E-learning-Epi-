@@ -10,11 +10,10 @@ document.getElementById("percent").innerText = progress + "%";
 
 },100);
 
-
 function openPage(page){
 
 localStorage.setItem("subject", page);
 
 window.location.href = "lessons.html";
 
-}
+                     }
