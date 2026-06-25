@@ -1,18 +1,27 @@
-window.lessons = [
+window.lessons=[
 
 {
-title: "Uko utwara neza 🚗",
-text: "Banza urebe imbere, inyuma no ku mpande mbere yo kugenda."
+
+image:"https://images.unsplash.com/photo-1503376780353-7e6692767b70",
+
+title:"SEAT BELT",
+
+text:"Buri gihe ambara umukandara.",
+
+answer:"Umukandara ugabanya ibyago byo gukomereka."
+
 },
 
 {
-title: "Kwirinda impanuka 🚦",
-text: "Wubahirize ibyapa byose n'amatara yo mu muhanda."
-},
 
-{
-title: "Intera hagati y'imodoka 🚘",
-text: "Hagarara kure y'indi modoka kugirango wirinde impanuka."
+image:"https://images.unsplash.com/photo-1449965408869-eaa3f722e40d",
+
+title:"MIRROR CHECK",
+
+text:"Banza urebe mu ndorerwamo.",
+
+answer:"Reba imbere, inyuma no ku mpande mbere yo kugenda."
+
 }
 
 ];
