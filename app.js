@@ -13,11 +13,8 @@ document.getElementById("percent").innerText = progress + "%";
 
 function openPage(page){
 
-if(page === "quiz"){
-window.location.href = "quiz.html";
-}
-else{
-window.location.href = "lessons.html?type=" + page;
-}
+localStorage.setItem("subject", page);
+
+window.location.href = "lessons.html";
 
 }
