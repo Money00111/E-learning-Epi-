@@ -19,6 +19,13 @@ else if(subject==="lights"){
         show();
     };
       }
+
+const subject = localStorage.getItem("subject");
+
+if(!subject){
+document.getElementById("content").innerHTML =
+"<h2>No subject selected</h2>";
+}
 const content=
 
 document.getElementById(
