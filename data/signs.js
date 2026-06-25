@@ -1,8 +1,7 @@
-window.lessons=[
+window.lessons = [
 
 {
-
-image:"images/stop.png",
+image:"https://placehold.co/700x350/2563eb/ffffff?text=STOP+SIGN",
 
 title:"STOP SIGN",
 
@@ -14,7 +13,7 @@ answer:"Hagarara mbere yo gukomeza."
 
 {
 
-image:"images/giveway.png",
+image:"https://placehold.co/700x350/16a34a/ffffff?text=GIVE+WAY",
 
 title:"GIVE WAY",
 
@@ -26,7 +25,7 @@ answer:"Reka abandi babanze."
 
 {
 
-image:"images/no_entry.png",
+image:"https://placehold.co/700x350/dc2626/ffffff?text=NO+ENTRY",
 
 title:"NO ENTRY",
 
