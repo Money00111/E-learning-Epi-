@@ -1,4 +1,3 @@
-
 let current=0;
 
 let score=0;
@@ -12,29 +11,25 @@ showQuestion();
 function showQuestion(){
 
 
-
-const q=
-
-quizQuestions[current];
+const q=window.quizQuestions[current];
 
 
 
 document.getElementById(
 
-"quiz"
+"quizContent"
 
 ).innerHTML=`
 
 
-
-<div class="quiz-card">
+<div class="lesson-card">
 
 
 <img
 
 src="${q.image}"
 
-class="quiz-image"
+class="lesson-image"
 
 >
 
@@ -54,13 +49,15 @@ ${q.question}
 
 
 
-<div id="feedback">
-
-</div>
+<p id="feedback"></p>
 
 
 
-<button onclick="previousQuestion()">
+<button
+
+onclick="previousQuestion()"
+
+>
 
 ⬅ Previous
 
@@ -68,7 +65,11 @@ ${q.question}
 
 
 
-<button onclick="nextQuestion()">
+<button
+
+onclick="nextQuestion()"
+
+>
 
 Next ➡
 
@@ -77,8 +78,6 @@ Next ➡
 
 
 </div>
-
-
 
 `;
 
@@ -101,49 +100,35 @@ q.options.forEach(
 
 opt.innerHTML+=`
 
+<button
 
-<div
-
-class="option"
-
-onclick="check(${i})"
+onclick="checkAnswer(${i})"
 
 >
 
-
-${String.fromCharCode(
-
-65+i
-
-)}
-
+${String.fromCharCode(65+i)}
 
 .
 
-
 ${o}
 
+</button>
 
-</div>
+<br>
 
+<br>
 
 `;
 
 
-
 });
-
-
-
-updateBar();
-
 
 
 }
 
 
 
-function check(i){
+function checkAnswer(i){
 
 
 const q=
@@ -152,21 +137,11 @@ quizQuestions[current];
 
 
 
-const all=
+const feed=
 
-document.querySelectorAll(
+document.getElementById(
 
-".option"
-
-);
-
-
-
-all.forEach(
-
-x=>x.style.pointerEvents=
-
-"none"
+"feedback"
 
 );
 
@@ -179,17 +154,12 @@ i===q.answer
 ){
 
 
-all[i]
-
-.classList.add(
-
-"correct"
-
-);
-
-
-
 score++;
+
+
+feed.innerHTML=
+
+"✅ Correct";
 
 
 }
@@ -198,23 +168,9 @@ score++;
 else{
 
 
-all[i]
+feed.innerHTML=
 
-.classList.add(
-
-"wrong"
-
-);
-
-
-
-all[q.answer]
-
-.classList.add(
-
-"correct"
-
-);
+"❌ Wrong";
 
 
 }
@@ -228,7 +184,7 @@ document.getElementById(
 ).innerHTML=
 
 
-"Score "
+"🏆 Score "
 
 +
 
@@ -249,7 +205,6 @@ quizQuestions.length;
 
 
 function nextQuestion(){
-
 
 
 if(
@@ -273,147 +228,9 @@ showQuestion();
 else{
 
 
-function finishQuiz(){
-
-let status =
-
-score>=Math.ceil(
-
-quizQuestions.length*0.7
-
-)
-
-?
-
-"PASS"
-
-:
-
-"FAIL";
-
-
-localStorage.setItem(
-
-"score",
-
-score
-
-);
-
-
-container.innerHTML=`
-
-
-<div class="certificate">
-
-
-<h1>
-
-🏆 Certificate
-
-</h1>
-
-
-
-<h2>
-
-${status}
-
-</h2>
-
-
-
-<p>
-
-Score
-
-${score}
-
-
-/
-
-${quizQuestions.length}
-
-</p>
-
-
-
-</div>
-
-
-`;
-
-}
-
-
-
-function previousQuestion(){
-
-
-
-if(
-
-current>0
-
-){
-
-
-current--;
-
-
-showQuestion();
-
-
-}
-
-
-
-}
-
-
-
-function updateBar(){
-
-
-
-let p=
-
-(
-
-(current+1)
-
-/
-
-quizQuestions.length
-
-)
-
-*100;
-
-
-
 document.getElementById(
 
-"quizBar"
-
-).style.width=
-
-
-p+"%";
-
-
-
-}
-
-
-
-function finishQuiz(){
-
-
-
-document.getElementById(
-
-"quiz"
+"quizContent"
 
 ).innerHTML=`
 
@@ -436,11 +253,27 @@ ${quizQuestions.length}
 
 </h2>
 
-
-
 `;
 
 
+}
+
+
+
+}
+
+
+
+function previousQuestion(){
+
+
+if(current>0){
+
+current--;
+
+showQuestion();
+
+}
+
 
   }
-  
