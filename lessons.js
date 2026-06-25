@@ -1,3 +1,24 @@
+const subject = localStorage.getItem("subject");
+
+if(subject==="signs"){
+    const script=document.createElement("script");
+    script.src="data/signs.js";
+    document.body.appendChild(script);
+
+    script.onload=()=>{
+        show();
+    };
+}
+
+else if(subject==="lights"){
+    const script=document.createElement("script");
+    script.src="data/lights.js";
+    document.body.appendChild(script);
+
+    script.onload=()=>{
+        show();
+    };
+      }
 const content=
 
 document.getElementById(
