@@ -1,124 +1,130 @@
-let current=0;
+let current = 0;
 
-let score=0;
-
-
-
-showQuestion();
+let score = 0;
 
 
 
-function showQuestion(){
+function loadQuestion(){
 
 
-const q=window.quizQuestions[current];
+const q = questions[current];
+
+
+document.getElementById(
+
+"question"
+
+).innerText = q.question;
 
 
 
 document.getElementById(
 
-"quizContent"
+"counter"
 
-).innerHTML=`
+).innerText =
 
+(current+1)
 
-<div class="lesson-card">
++
 
+" / "
 
-<img
++
 
-src="${q.image}"
-
-class="lesson-image"
-
->
+questions.length;
 
 
-
-<h2>
-
-${q.question}
-
-</h2>
-
-
-
-<div id="options">
-
-</div>
-
-
-
-<p id="feedback"></p>
-
-
-
-<button
-
-onclick="previousQuestion()"
-
->
-
-⬅ Previous
-
-</button>
-
-
-
-<button
-
-onclick="nextQuestion()"
-
->
-
-Next ➡
-
-</button>
-
-
-
-</div>
-
-`;
-
-
-
-const opt=
 
 document.getElementById(
 
-"options"
+"sign"
+
+).src = q.image;
+
+
+
+const box =
+
+document.getElementById(
+
+"answers"
 
 );
+
+
+box.innerHTML = "";
 
 
 
 q.options.forEach(
 
-(o,i)=>{
+(opt,i)=>{
 
 
-opt.innerHTML+=`
+const btn=
 
-<button
+document.createElement(
 
-onclick="checkAnswer(${i})"
+"button"
 
->
+);
 
-${String.fromCharCode(65+i)}
 
-.
+btn.className=
 
-${o}
+"answer-btn";
 
-</button>
 
-<br>
+btn.innerText=
 
-<br>
+opt;
 
-`;
+
+
+btn.onclick=()=>{
+
+
+if(
+
+i===q.answer
+
+){
+
+btn.classList.add(
+
+"correct"
+
+);
+
+
+score++;
+
+
+}
+
+
+else{
+
+
+btn.classList.add(
+
+"wrong"
+
+);
+
+
+}
+
+
+};
+
+
+box.appendChild(
+
+btn
+
+);
 
 
 });
@@ -128,99 +134,23 @@ ${o}
 
 
 
-function checkAnswer(i){
-
-
-const q=
-
-quizQuestions[current];
-
-
-
-const feed=
-
 document.getElementById(
 
-"feedback"
+"next"
 
-);
-
-
-
-if(
-
-i===q.answer
-
-){
-
-
-score++;
-
-
-feed.innerHTML=
-
-"✅ Correct";
-
-
-}
-
-
-else{
-
-
-feed.innerHTML=
-
-"❌ Wrong";
-
-
-}
-
-
-
-document.getElementById(
-
-"score"
-
-).innerHTML=
-
-
-"🏆 Score "
-
-+
-
-score
-
-+
-
-"/"
-
-+
-
-quizQuestions.length;
-
-
-
-}
-
-
-
-function nextQuestion(){
-
-
-if(
-
-current<
-
-quizQuestions.length-1
-
-){
+).onclick=()=>{
 
 
 current++;
 
 
-showQuestion();
+if(
 
+current<questions.length
+
+){
+
+loadQuestion();
 
 }
 
@@ -228,52 +158,25 @@ showQuestion();
 else{
 
 
-document.getElementById(
+localStorage.setItem(
 
-"quizContent"
+"score",
 
-).innerHTML=`
+score
 
-
-<h1>
-
-🎉 Quiz Yarangiye
-
-</h1>
+);
 
 
+window.location=
 
-<h2>
-
-${score}
-
-/
-
-${quizQuestions.length}
-
-</h2>
-
-`;
+"result.html";
 
 
 }
 
 
-
-}
-
+};
 
 
-function previousQuestion(){
 
-
-if(current>0){
-
-current--;
-
-showQuestion();
-
-}
-
-
-  }
+loadQuestion();
