@@ -1,9 +1,8 @@
 let currentQuestion = parseInt(localStorage.getItem("currentQuestion")) || 0;
 let score = parseInt(localStorage.getItem("score")) || 0;
-
 function loadQuestion() {
 
-  // niba ibibazo birangiye
+  // 🔥 IMPORTANT: niba yararangiye
   if (currentQuestion >= questions.length) {
     document.getElementById("question").innerText = "Urangije quiz!";
     document.getElementById("options").innerHTML = "";
