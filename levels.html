@@ -103,7 +103,15 @@ window.location.href =
 }
   </script>
 <script>
+function nextQuestion() {
+  currentQuestion++;
 
+  // save progress
+  localStorage.setItem("currentQuestion", currentQuestion);
+  localStorage.setItem("score", score);
+
+  loadQuestion();
+    }
 function goHome(){
 
 window.location.href="index.html";
