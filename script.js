@@ -1,3 +1,9 @@
+let currentQuestion = parseInt(localStorage.getItem("currentQuestion"));
+if (isNaN(currentQuestion)) currentQuestion = 0;
+
+let score = parseInt(localStorage.getItem("score"));
+if (isNaN(score)) score = 0;
+
 let currentQuestion = parseInt(localStorage.getItem("currentQuestion")) || 0;
 let score = parseInt(localStorage.getItem("score")) || 0;
 function loadQuestion() {
