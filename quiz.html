@@ -1,28 +1,119 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="rw">
 
 <head>
 
-<link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width,initial-scale=1">
+
+<title>EPI DRIVING ACADEMY</title>
+
+<link rel="stylesheet"
+href="css/style.css">
 
 </head>
 
 <body>
 
 
-<div class="quiz-container">
+<div class="sidebar">
+
+<h2>
+
+EPI DRIVING
+
+</h2>
 
 
-<h1 id="score">
+<a href="index.html">
 
-🏆 Score 0/0
+🏠 Home
 
-</h1>
+</a>
+
+
+<a href="#">
+
+📖 Amategeko
+
+</a>
+
+
+<a href="#">
+
+📝 Quiz
+
+</a>
+
+
+<a href="result.html">
+
+🏆 Results
+
+</a>
+
+
+<a href="#">
+
+ℹ️ About
+
+</a>
+
+
+</div>
 
 
 
-<div id="quizContent">
+<div class="main">
+
+
+<div class="quiz-card">
+
+
+<p id="counter">
+
+1 / 20
+
+</p>
+
+
+
+<h2 id="question">
+
+Question
+
+</h2>
+
+
+
+<img
+
+id="sign"
+
+src="images/logo.png"
+
+>
+
+
+
+<div id="answers">
+
+</div>
+
+
+
+<button
+
+id="next"
+
+>
+
+Next ➜
+
+</button>
+
+
 
 </div>
 
@@ -32,11 +123,22 @@
 
 
 
-<script src="data/quiz.js"></script>
+<script
 
-<script src="js/quiz.js"></script>
+src="data/questions.js">
+
+</script>
+
+
+
+<script
+
+src="js/quiz.js">
+
+</script>
+
 
 
 </body>
 
-  </html>
+</html>
