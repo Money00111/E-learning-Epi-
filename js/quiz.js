@@ -1,3 +1,42 @@
+let timer;
+
+function startTimer(){
+
+    updateTimer();
+
+    timer = setInterval(()=>{
+
+        state.timeLeft--;
+
+        saveState(state);
+
+        updateTimer();
+
+        if(state.timeLeft<=0){
+
+            clearInterval(timer);
+
+            localStorage.setItem("score",state.score);
+
+            window.location="result.html";
+
+        }
+
+    },1000);
+
+}
+
+function updateTimer(){
+
+    let minutes=Math.floor(state.timeLeft/60);
+
+    let seconds=state.timeLeft%60;
+
+    document.getElementById("timer").innerText=
+        String(minutes).padStart(2,"0")+":"+
+        String(seconds).padStart(2,"0");
+
+}
 let state = getState();
 
 function loadQuestion(){
