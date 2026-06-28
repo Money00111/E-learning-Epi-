@@ -1,24 +1,25 @@
-let timer;
+let questionTimer;
+const QUESTION_TIME = 20;
 
-function startTimer(){
+function startQuestionTimer(){
 
-    updateTimer();
+    clearInterval(questionTimer);
 
-    timer = setInterval(()=>{
+    let timeLeft = QUESTION_TIME;
 
-        state.timeLeft--;
+    document.getElementById("timer").innerText = timeLeft;
 
-        saveState(state);
+    questionTimer = setInterval(()=>{
 
-        updateTimer();
+        timeLeft--;
 
-        if(state.timeLeft<=0){
+        document.getElementById("timer").innerText = timeLeft;
 
-            clearInterval(timer);
+        if(timeLeft <= 0){
 
-            localStorage.setItem("score",state.score);
+            clearInterval(questionTimer);
 
-            window.location="result.html";
+            nextQuestion();
 
         }
 
@@ -26,16 +27,22 @@ function startTimer(){
 
 }
 
-function updateTimer(){
+function nextQuestion(){
 
-    let minutes=Math.floor(state.timeLeft/60);
+    if(state.current < questions.length-1){
 
-    let seconds=state.timeLeft%60;
+        state.current++;
+        saveState(state);
+        loadQuestion();
 
-    document.getElementById("timer").innerText=
-        String(minutes).padStart(2,"0")+":"+
-        String(seconds).padStart(2,"0");
+    }else{
 
+        localStorage.setItem("score",state.score);
+        window.location="result.html";
+
+    }
+
+}
 }
 let state = getState();
 
