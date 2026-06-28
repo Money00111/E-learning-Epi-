@@ -1,102 +1,39 @@
 <!DOCTYPE html>
 <html lang="rw">
-
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz</title>
 
-<title>EPI DRIVING ACADEMY</title>
-
-<link rel="stylesheet"
-href="css/style.css">
-
+<link rel="stylesheet" href="css/quiz.css">
 </head>
 
 <body>
 
+<div class="quiz-container">
 
+  <p id="counter"></p>
 
+  <div class="progress">
+    <div id="bar"></div>
+  </div>
 
-</div>
+  <h2 id="question"></h2>
 
+  <img id="sign">
 
+  <div id="answers"></div>
 
-<div class="main">
-
-
-<div class="quiz-card">
-
-
-<p id="counter">
-
-1 / 20
-
-</p>
-
-
-
-<h2 id="question">
-
-Question
-
-</h2>
-
-
-
-<img
-
-id="sign"
-
-src="images/logo.png"
-
->
-
-
-
-<div id="answers">
+  <div class="nav">
+    <button id="prev">⬅ Back</button>
+    <button id="next">Next ➜</button>
+  </div>
 
 </div>
 
-
-
-<button
-
-id="next"
-
->
-
-Next ➜
-
-</button>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-<script
-
-src="data/questions.js">
-
-</script>
-
-
-
-<script
-
-src="js/quiz.js">
-
-</script>
-
-
+<script src="data/questions.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/quiz.js"></script>
 
 </body>
-
-</html>
+      </html>
