@@ -104,3 +104,4 @@ document.getElementById("prev").onclick = () => {
 };
 
 loadQuestion();
+startTimer();
